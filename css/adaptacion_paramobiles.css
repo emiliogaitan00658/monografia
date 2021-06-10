@@ -1,0 +1,13 @@
+/*
+--------------------------------------------------------
+--------------------------------------------------------
+      Para Mobiles y ajustables a celulares
+--------------------------------------------------------
+--------------------------------------------------------
+*/
+@media only screen and (max-width: 990px) {
+    .maximo {
+        display: none !important; } }
+@media only screen and (min-width: 989px) {
+    .minimo {
+        display: none !important; } }

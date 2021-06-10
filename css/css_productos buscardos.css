@@ -1,0 +1,15 @@
+.ei{
+    margin-top: 1em;
+    color: white;
+    border: 1px solid #5a5a5a;
+}
+.ei form{
+    padding: 1em;
+}
+.ei input[type=text]{
+    border: 1px solid #5a5a5a;
+    color: black;
+    padding: 1em;
+    width: 50%;
+
+}

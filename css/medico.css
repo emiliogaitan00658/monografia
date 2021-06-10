@@ -1,0 +1,98 @@
+.pe {
+    padding: 1em;
+    color: white;
+    border-radius: 6px;
+    background-color: #2b2d2f;
+    font-family: sans-serif;
+}
+
+.marco {
+    width: 50%;
+}
+
+.marco2 {
+    width: 40%;
+}
+.coool{
+    border-radius: 6px;
+}
+
+.marco00658{
+    width: 100%;
+}
+.marco00658 div{
+    margin-left: 1em;
+    width: 40%!important;
+    display: inline-block;
+}
+.marco00658 p{
+    padding: 6px;
+    border-radius: 6px;
+    background-color: #2b2d2f;
+    color: white;
+}
+
+.otro_marco div{
+    width: 40%!important;
+    display: inline-block;
+    margin-left: 1em;
+}
+.otro_marco div p{
+    border-radius: 6px!important;
+    background-color: #004c6d;
+    color: #FFFFFF;
+}
+.icontamano{
+    margin-top: 0!important;
+    padding: 0!important;
+    font-size: 3em!important;
+}
+.wr {
+    padding: 3em;
+}
+
+.photo {
+    width: 60% !important;
+    height: 500px !important;
+}
+.jk {
+    border-left: 1px solid #3e2723;
+    border-right: 1px solid #3e2723;
+}
+
+.montaje {
+    background-image: url("../Medico/modelo.jpg");
+    width: 100% !important;
+    height: auto !important;
+    background-attachment: fixed;
+}
+
+.conenedor {
+    width: 50%;
+}
+
+.imgger {
+    margin: 1em;
+    width: 15% !important;
+    display: inline-block !important;
+}
+
+.sucur {
+    width: 10%;
+    display: inline-block !important;
+}
+
+.pedido {
+    width: 25%;
+    padding-left: 1em;
+    display: inline-block;
+}
+
+.estudio {
+    padding: 1em;
+}
+
+.fo {
+    width: 40%;
+    display: inline-block;
+}
