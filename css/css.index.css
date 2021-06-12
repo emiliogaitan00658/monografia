@@ -1,3 +1,9 @@
+body{
+    background-color: #f5f4f1!important;
+}
+.linea{
+    border-bottom: 1px solid #0d0d0d;
+}
 @font-face {
     font-family: 'Light' !important;
     src: url("../fonts/Light/Roboto-Light.woff2"), url("../fonts/Light/Roboto-Light.woff") format("woff"), url("../fonts/Light/Roboto-Light.ttf") format("truetype");
@@ -44,9 +50,7 @@
 .float {
     position: fixed;
 }
-.poner2018{
-    background-color: #f5f4f1!important;
-}
+
 .no-margenes{
     margin-bottom: 0px!important;
     margin-top: 0px !important;

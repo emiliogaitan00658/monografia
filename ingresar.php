@@ -1,29 +1,15 @@
-﻿<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="img/093b747.png"/>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>.. ::Sistema de Radiografia Digital:: .. </title>
-    <link rel="stylesheet" href="Catalogo%20Marca/carusel/css/bootstrap.min.css">
-    <link rel="stylesheet" href="Catalogo%20Marca/carusel/css/bootstrap-theme.min.css">
-    <link href="framework/css.iconos.css" rel="stylesheet">
-    <link rel="stylesheet" href="icomoon/style.css">
-    <link type="text/css" rel="stylesheet" href="framework/materialize.min.css" media="screen,projection"/>
-    <link rel="stylesheet" href="css/adaptacion_paramobiles.css">
-    <link rel="stylesheet" href="css/css.index.css">
-    <link rel="stylesheet" href="css/medico.css">
-    <script type="text/javascript" src="js/sweetalert.min.js"></script>
-</head>
-<body>
+﻿<?php
+include_once "model/header.php";
+?>
 <nav>
     <div class="fixed navbar-fixed">
         <nav class="nav-color fixed">
             <div class="nav-wrapper tr">
-                <a href="#" class="brand-logo white-text tr pp maximo">Sistema de Radiografia Digital</a>
-                <a href="index.php" class="brand-logo white-text tr minimo">Sistema de Radiografia Digital</a>
+                <a href="" class="brand-logo white-text tr pp maximo"> <img
+                            src="img/logo.png"
+                            alt="" class="responsive-img"
+                            width="20%">EcoRadiología</a>
+                <a href="index.php" class="brand-logo white-text tr minimo">EcoRadiología</a>
                 <ul class="right  maximo">
                     <li><a href="ingresar.php" class="black-text"><i class="icon-cancel-circle small"></i></a></li>
                 </ul>
@@ -33,13 +19,13 @@
 </nav>
 <br>
 <div class="container center">
-    <h5>Plataforma Online</h5>
+    <h5 class="linea">Plataforma Online</h5>
     <hr class="container z-depth-3">
 </div>
 <br>
 <br>
-<div class="container center center-align">
-    <form action="ingresar.php" method="post" class="container">
+<div class="container center center-align z-depth-1  white" style="border-radius: 6px;">
+    <form action="ingresar.php" method="post" class="container" style="margin-top: 2em;">
         <p>Usuario:</p>
         <input type="text" name="user" placeholder="Usuario" value="<?php if ($_POST) {
             echo $_POST['user'];
@@ -56,9 +42,9 @@
 <?php
 session_start();
 if ($_POST) {
-    include_once 'Medico/segurida/conexion.php';
+    include_once 'aplicacion_RX/segurida/conexion.php';
 
-    $user = $_POST['user'];
+    $user = filter_var( $_POST['user'], FILTER_SANITIZE_STRING);
     $pass = $_POST['pass'];
 
 
@@ -67,13 +53,13 @@ if ($_POST) {
     }
 
     $result = $mysqli->query("SELECT * FROM `sucursales` WHERE `user_sucursal` LIKE '$user' AND `pass_sucursal` LIKE '$pass'");
-    $rows= $result->fetch_array(MYSQLI_ASSOC);
+    $rows = $result->fetch_array(MYSQLI_ASSOC);
     $_SESSION['sucursal'] = $rows['indsucursal'];
 
     if (!empty($rows)) {
-        if($rows['user_sucursal']==$user AND $rows['pass_sucursal']==$pass){
+        if ($rows['user_sucursal'] == $user and $rows['pass_sucursal'] == $pass) {
             echo "<script>location.href='publicar.php'</script>";
-        }else{
+        } else {
             echo '<script>swal("Mensaje","Contaseña o Usuario No identificada","error"); </script>';
         }
     } else {
@@ -85,10 +71,10 @@ if ($_POST) {
 ?>
 </body>
 <?php
-include_once 'MVS/footer.php';
+include_once 'model/footer.php';
 ?>
-<script src="Catalogo%20Marca/carusel/js/jquery-3.1.0.min.js"></script>
-<script src="Catalogo%20Marca/carusel/js/bootstrap.min.js"></script>
+<script src="css/buscador_applicacion/js/jquery-3.1.0.min.js"></script>
+<script src="css/buscador_applicacion/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/nuevo.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/personal.js"></script>
