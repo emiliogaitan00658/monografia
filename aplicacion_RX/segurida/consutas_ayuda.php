@@ -16,21 +16,21 @@ if ($_GET){
   $correoreceptor = $medico['Correo'];
   $asunto = "Plataforma Online Sistema de Radiografia Digital";
 
-  $mensaje = "Notificacion de Sistema de Radiografia Digital: \r\n";
+  $mensaje = "Notificacion de EcoRadiología: \r\n";
   $mensaje .= "Hola DR.: " . $medico['nombre'] . $medico['apellido'] . "\r\n";
   $mensaje .= "Pronto le reponderemos su ayuda o consulta sobre la plataforma online." . "\r\n";
-  $mensaje .= "!Gracias por se parte de Sistema de Radiografia Digital!" . "\r\n";
+  $mensaje .= "!Gracias por se parte de EcoRadiología" . "\r\n";
   $mensaje .= "\r\n";
   $mensaje .= "\r\n";
-  $mensaje .= "http://www.sistemadadiografiadigital.com/index.php" . "\r\n";
+  $mensaje .= "http://www.EcoRadiología.com/index.php" . "\r\n";
   $mensaje .= "\r\n";
   $mensaje .= "\r\n";
   $mensaje .= "Telefono de Oficina:" . $telefono . "\r\n";
   $mensaje .= "Fecha:" . $fechaa . "\r\n";
   $mensaje .= "Hora:" . $hora . "\r\n";
 
-  $cabeceras = 'From: sistemaradiografiadigital@hotmail.com' . "\r\n" .
-      'Reply-To: sistemaradiografiadigital@hotmail.com' . "\r\n" .
+  $cabeceras = 'From: EcoRadiología@hotmail.com' . "\r\n" .
+      'Reply-To: EcoRadiología@hotmail.com' . "\r\n" .
       'X-Mailer: PHP/' . phpversion();
   mail($correoreceptor, $asunto, $mensaje, $cabeceras);
 

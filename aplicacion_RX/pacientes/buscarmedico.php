@@ -69,7 +69,7 @@ include_once '../segurida/registromedico.php';
             <form action="buscarmedico.php?ip=<?php if ($_GET) {
                 echo $departamento = $_GET['ip'];
             } ?>" method="post" class="container">
-                <span style="width: 35px!important;padding: 1em; border-bottom: 1px solid black;" class="center-align">Usuario:</span>
+                <span style="width: 35px!important;padding: 1em; border-bottom: 1px solid black;" class="center-align">Codigo Minsa:</span>
                 <input type="text" name="id" placeholder="Usuario" value="admin" style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                 <input type="hidden" name="depar" value="<?php if ($_GET) {
                     echo $departamento = $_GET['ip'];
@@ -157,35 +157,19 @@ include_once '../segurida/registromedico.php';
     </div>
 
     <script src="../../css/buscador_applicacion/js/buscador.js"></script>
-    <footer class="page-footer white z-depth-3">
-        <div class="container">
-            <div class="row">
-                <h5 class="black-text" style="bor">Plataforma Online</h5>
-                <p class="black-text text-lighten-4">
-                    Solo Personal Autorizado!!!
-                    <br>
-                    En casos de emergencia llamar a oficinas de EcoRadiología.
-                </p>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container black-text">
-                <script>
-                    var fecha = new Date();
-                    var ano = fecha.getFullYear();
-                </script>
-                ©
-                <script>document.write(ano); </script>
-                Copyrightv EcoRadiología
-                <a class="black-text text-lighten-4 right" href="#!"> Derechos de autor <?php echo date("Y"); ?></a>
+    <footer class="page-footer  z-depth-3" style="background-color: #2B394D">
+        <div class="container" style="background-color: #2B394D">
+            <div class="row" style="background-color: #2B394D">
+                <div class="col l6 s12">
+                    <h5 class="white-text"><img src="img/logo.png" alt="" class="responsive-img" style="width: 15%">EcoRadiología</h5>
+                    <p class="white-text text-lighten-4">
+                        Ecoradiología Nuestra plataforma EcoRadiolgía permite al dentista socio y paciente acceder a las
+                        imágenes y diagnósticos: En tiempo real (conforme se va elaborando el estudio) De por vida, los 365
+                        días del año Desde cualquier dispositivo (móvil, tablet, computadora, laptop).</p>
+                </div>
             </div>
         </div>
     </footer>
-</div>
-<div class="minimo container">
-    <h5>No Disponible para mobiles</h5>
-    <p>Solo personal Autorizado en EcoRadiología</p>
-</div>
 <script src="../../css/carusel/js/jquery-3.1.0.min.js"></script>
 <script src="../../css/carusel/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../js/nuevo.js"></script>

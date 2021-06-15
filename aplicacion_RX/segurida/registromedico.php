@@ -55,9 +55,9 @@ if ($_POST) {
 
         $telefono = " Tel: 2220-6871---2277-0288";
         $correoreceptor = $correo;
-        $asunto = "Plataforma Online Sistema de Radiografia Digitall";
+        $asunto = "Plataforma Online EcoRadiología";
 
-        $mensaje = "Notificacion de Sistema de Radiografia Digital \r\n";
+        $mensaje = "Notificacion de EcoRadiología \r\n";
         $mensaje .= "\r\n";
         $mensaje .= "Hola Dr. " . $nombre . $apellido . "\r\n";
 
@@ -67,14 +67,13 @@ if ($_POST) {
         $mensaje .= "a nuestra plataforma para poder ver las radiografías de sus pacientes en" . "\r\n";
         $mensaje .= "línea, a través de la cual podrá ingresar en su móvil, tablet o computador." . "\r\n";
         $mensaje .= "Estará a su disposición en cualquier momento, las 24 horas del día, los 365 días del año." . "\r\n";
-        $mensaje .= "¡Gracias por ser parte de Sistema de Radiografia Digital!" . "\r\n";
+        $mensaje .= "¡Gracias por ser parte de EcoRadiología!" . "\r\n";
         $mensaje .= "\r\n";
         $mensaje .= "\r\n";
         $mensaje .= "Usuario: " . $usuario . "\r\n";
         $mensaje .= "Contraseña: " . $pass . "\r\n";
         $mensaje .= "\r\n";
-        $mensaje .= "http://www.sistemaradiografiadigital.com/aplicacion_RX/pacientes/clinica.php?indmedico=".$pinunico."\r\n";
-        /*$mensaje .= "http://www.orthodentalnic.com/Medico.php"."\r\n";*/
+        $mensaje .= "http://www.EcoRadiología.com/aplicacion_RX/pacientes/clinica.php?indmedico=".$pinunico."\r\n";
         $mensaje .= "\r\n";
         $mensaje .= "\r\n";
         $mensaje .= "Recuerda de Cambiar las Contraseña y usuario"."\r\n";
@@ -83,8 +82,8 @@ if ($_POST) {
         $mensaje .= "Hora: " . $hora . "\r\n";
 
 
-        $cabeceras = 'From: sistemaradiografiadigital@hotmail.com' . "\r\n" .
-            'Reply-To: sistemaradiografiadigital@hotmail.com' . "\r\n" .
+        $cabeceras = 'From: EcoRadiología@hotmail.com' . "\r\n" .
+            'Reply-To: EcoRadiología@hotmail.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
         mail($correoreceptor, $asunto, $mensaje, $cabeceras);

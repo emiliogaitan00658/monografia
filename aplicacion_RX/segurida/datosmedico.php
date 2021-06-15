@@ -43,23 +43,23 @@ if ($_POST) {
 
     $telefono = " Tel: 2220-6871---2277-0288";
     $correoreceptor = $medico['Correo'];
-    $asunto = "Plataforma Online Sistema de Radiografia Digital";
+    $asunto = "Plataforma Online EcoRadiología";
 
-    $mensaje = "Notificacion de Sistema de Radiografia Digital: \r\n";
+    $mensaje = "Notificacion de EcoRadiología: \r\n";
     $mensaje .= "Hola DR.: " . $medico['nombre'] . $medico['apellido'] . "\r\n";
     $mensaje .= "Sus datos de perfil sean actualizados correctamente." . "\r\n";
-    $mensaje .= "!Gracias por se parte de Sistema de Radiografia Digital!" . "\r\n";
+    $mensaje .= "!Gracias por se parte de EcoRadiología!" . "\r\n";
     $mensaje .= "\r\n";
     $mensaje .= "\r\n";
-    $mensaje .= "http://www.sistemaradiografiadigital.com/index.php" . "\r\n";
+    $mensaje .= "http://www.EcoRadiología.com/index.php" . "\r\n";
     $mensaje .= "\r\n";
     $mensaje .= "\r\n";
     $mensaje .= "Telefono de Oficina:" . $telefono . "\r\n";
     $mensaje .= "Fecha:" . $fechaa . "\r\n";
     $mensaje .= "Hora:" . $hora . "\r\n";
 
-    $cabeceras = 'From: sistemaradiografiadigital@hotmail.com' . "\r\n" .
-        'Reply-To: sistemaradiografiadigitall@hotmail.com' . "\r\n" .
+    $cabeceras = 'From: EcoRadiología@hotmail.com' . "\r\n" .
+        'Reply-To: EcoRadiología@hotmail.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     mail($correoreceptor, $asunto, $mensaje, $cabeceras);
 

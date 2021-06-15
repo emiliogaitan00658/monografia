@@ -24,8 +24,8 @@ include_once "model/header.php";
 </div>
 <br>
 <br>
-<div class="container center center-align z-depth-1  white" style="border-radius: 6px;">
-    <form action="ingresar.php" method="post" class="container" style="margin-top: 2em;">
+<div class="container center white center-align z-depth-1  white" style="border-radius: 6px;">
+    <form action="ingresar.php" method="post" class="container white" style="margin-top: 2em;">
         <p>Usuario:</p>
         <input type="text" name="user" placeholder="Usuario" value="<?php if ($_POST) {
             echo $_POST['user'];
