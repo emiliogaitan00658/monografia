@@ -30,7 +30,7 @@ if ($_POST) {
                 echo '<script>location.href = "../../index.php";</script>';
             }
             ?>
-            <script>location.href = "../pacientes/clinica.php?indmedico=<?php echo $valor?>";</script>
+            <script>location.href = "aplicacion_RX/pacientes/clinica.php?indmedico=<?php echo $valor?>";</script>
             <?php
         } else {
             echo '<script>swal("Mensaje","Contaseña o Usuario no valido","error")</script>';

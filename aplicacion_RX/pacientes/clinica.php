@@ -1,8 +1,8 @@
 <?php
-include_once "aplicacion_RX/modelo/header.php";
 session_start();
+include "../modelo/header.php";
 if (!$_SESSION) {
-    echo "<script>location.href='../../ingresar.php.php'</script>";
+    echo "<script>location.href='../../ingresar.php'</script>";
 }
 
 include_once '../segurida/datosmedico.php';
@@ -11,14 +11,15 @@ $verificar = $row['usuario'];
 $_SESSION['user'] = $row['indmedico'];
 
 if (empty($verificar)) {
-    header("location:http://www.orthodentalnic.com/index.php");
+    echo '<script>location.href = "../../ingresar.php</script>';
+
 }
 
 $varte = $row['usuario'];
 $varte2 = $row['usuario'];
 
 if (ctype_digit($varte) or $varte2 == "admin") {
-    /* echo '<script>
+     echo '<script>
     swal({
         title:"Mensaje",
         text:"Debes de Cambiar tu usuario y contraseña",
@@ -27,7 +28,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
         dangerMode:true,
     })
     });
-    </script>';*/
+    </script>';
 }
 ?>
 
@@ -363,4 +364,4 @@ if (ctype_digit($varte) or $varte2 == "admin") {
         </div>
     </div>
 
-<?php include_once "model/footer.php"; ?>
+<?php include "../../model/footer.php"; ?>

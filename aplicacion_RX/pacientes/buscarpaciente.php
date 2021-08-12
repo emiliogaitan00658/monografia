@@ -201,7 +201,7 @@
                     <br>
                     <span><b>Estos datos esta bloqueados solo el doctor puede modificar el usuario y contraseña.</b></span>
                     <hr>
-                    <span style="width:15%!important; padding: 1em;"><b>Usuario:</b></span>
+                    <span style="width:15%!important; padding: 1em;"><b>Codigo Minsa:</b></span>
                     <input type="text" name="user" placeholder="usuario" required
                            style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em; width: 50%"
                            value="<?php echo $medico['usuario']; ?>">

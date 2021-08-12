@@ -1,13 +1,22 @@
-﻿<?php
-include_once "model/header.php";
-?>
+﻿<nav>
+    <div class="nav-wrapper" style="background-color: #2B394D">
+        <a href="#!" class="brand-logo center">EcoRadiología</a>
+        <ul class="left hide-on-med-and-down">
+            <li><a href="sass.html">Inicio</a></li>
+            <li><a href="badges.html">Soporte</a></li>
+            <li><a href="collapsible.html">Tutorial</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
 <?php
+include_once "model/header.php";
 include_once 'aplicacion_RX/segurida/seguridadlogin.php';
 ?>
 <div class="maximo">
     <div class="marco2 right">
         <div class="medic white">
-            <form action="index.php" method="post" class="wr center-block center ">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="wr center-block center ">
                 <!--                <p class="pe center z-depth-1">INGRESAR</p>-->
                 <input type="text" name="usuario" placeholder="Codigo Minsa" required
                        style="padding-left: 1em; border: 1px solid #00acc1;border-radius: 6px;">
@@ -48,7 +57,7 @@ include_once 'aplicacion_RX/segurida/seguridadlogin.php';
     <br>
     <div class="center">
         <div class="medic white">
-            <form action="index.php" method="post" class="wr center-block center ">
+            <form action="i<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="wr center-block center ">
                 <p class="pe center">Acceso al Sistema</p>
                 <p>Usuario:</p>
                 <input type="text" name="usuario" placeholder="Usuario" required

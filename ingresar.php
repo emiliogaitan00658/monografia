@@ -1,6 +1,7 @@
 ﻿<?php
 include_once "model/header.php";
 ?>
+
 <nav>
     <div class="fixed navbar-fixed">
         <nav class="nav-color fixed">
@@ -25,7 +26,7 @@ include_once "model/header.php";
 <br>
 <br>
 <div class="container center white center-align z-depth-1  white" style="border-radius: 6px;">
-    <form action="ingresar.php" method="post" class="container white" style="margin-top: 2em;">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="container white" style="margin-top: 2em;">
         <p>Usuario:</p>
         <input type="text" name="user" placeholder="Usuario" value="<?php if ($_POST) {
             echo $_POST['user'];
