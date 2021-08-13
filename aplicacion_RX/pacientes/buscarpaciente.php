@@ -107,7 +107,7 @@
                                 width="20%">EcoRadiología</a>
                     <a href="../../" class="brand-logo white-text tr minimo">EcoRadiología</a>
                     <ul class="right  maximo">
-                        <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['ip']; ?>" class="black-text"><i class="icon-arrow-left2 "></i></a>
+                        <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['id']; ?>" class="black-text"><i class="icon-arrow-left2 "></i></a>
                         </li>
                     </ul>
                 </div>

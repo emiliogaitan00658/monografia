@@ -87,27 +87,34 @@ if (ctype_digit($varte) or $varte2 == "admin") {
     </script>
 
     <nav class="white">
-        <div class="fixed navbar-fixed">
-            <nav class="nav-color fixed">
-                <div class="nav-wrapper tr">Sistema de Radiografia Digital</a>
-                    <a href="" class="brand-logo blue-grey-tex tr minimo">Sistema de Radiografia Digital</a>
-                    <ul class="right  maximo">
-                        <li><a href="../../index.php" class="black-text"><i class="icon-cancel-circle small"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        <nav>
+            <div class="fixed navbar-fixed">
+                <nav class="nav-color fixed">
+                    <div class="nav-wrapper tr">
+                        <a href="#" class="brand-logo white-text tr pp maximo"> <img
+                                    src="../../img/logo.png"
+                                    alt="" class="responsive-img"
+                                    width="20%">EcoRadiología</a>
+                        <a href="../../" class="brand-logo white-text tr minimo">EcoRadiología</a>
+                        <ul class="right  maximo">
+                            <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['ip']; ?>" class="black-text"><i class="icon-arrow-left2 "></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </nav>
         <ul class="collapsible minimo sao" style="position: relative;" data-collapsible="accordion">
             <li class="container center sao">
                 <div class="collapsible-header white-text sa">Menu</div>
                 <div class="collapsible-body ">
                     <ul class="left sa">
                         <a href="#" onclick="rx1();" class="btn"><i class="icon-home"> </i>Inicio</a>
+                        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia</a>
                         <a href="#" onclick="rx2();" class="white-text"><i class="icon-info"> </i>Notificación</a>
                         <a href="#" onclick="rx3();" class="white-text"><i class="icon-notification "> </i>Ayuda</a>
                         <a href="#" onclick="rx4();" class="white-text"><i class="icon-user"> </i>Cuenta</a>
-                        <li><a href="../../index.php" class="">Salir</a></li>
+                        <li><a href="../../index.php" class="">X</a></li>
                     </ul>
                 </div>
             </li>
@@ -118,6 +125,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
     </div>
     <div class="center-align center-block center container row maximo">
         <a href="#" onclick="rx1();" class="btn"><i class="icon-home"> </i>Inicio</a>
+        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia</a>
         <a href="#" onclick="rx2();" class="btn"><i class="icon-info"> </i>Notificación</a>
         <a href="#" onclick="rx3();" class="btn"><i class="icon-notification "> </i>Ayuda</a>
         <a href="#" onclick="rx4();" class="btn"><i class="icon-user"> </i>Cuenta</a>
@@ -140,7 +148,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                                                                    class="responsive-img"></a>
                     </div>
                     <div class="imgger z-depth-1">
-                        <a href="resultados_estudio.php?ip=2"><img src="../img_medico/atm.jpg" alt=""
+                        <a href="resultados_estudio.php?ip=2"><img src="../img_medico/atm.png" alt=""
                                                                    class="responsive-img"></a>
                     </div>
                     <div class="imgger z-depth-1">
@@ -259,7 +267,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                         </div>
                         <div>
                             <p>Mensaje:</p>
-                            <textarea name="txt3" id="" cols="100" rows="10"></textarea>
+                            <textarea name="txt3" id="" cols="1000" rows="10"></textarea>
                         </div>
 
                     </section>
@@ -267,7 +275,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                     <section class="center center-align">
                         <hr class="z-depth-3">
                         <div>
-                            <input type="submit" value="Actualizar" class="btn black white-text">
+                            <input type="submit" value="Enviar a soporte" class="btn black white-text">
                         </div>
                         <hr class="z-depth-3">
                     </section>
