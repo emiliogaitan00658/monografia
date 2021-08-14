@@ -44,6 +44,12 @@ $conteo = $resul->fetch_array(MYSQLI_ASSOC);
     <div class="lk">
         <a href="aplicacion_RX/pacientes/sucursales.php" class="btn-link">Publicar Estudio</a>
     </div>
+    <div class="lk">
+        <a href="aplicacion_RX/pacientes/sucursales.php" class="btn-link">Lista de clientes</a>
+    </div>
+    <div class="lk">
+        <a href="aplicacion_RX/pacientes/sucursales.php" class="btn-link">Agregar Personal</a>
+    </div>
     <hr>
     <p><?php echo $conteo['contSuma']; ?> publicaciones total.</p>
     <hr>

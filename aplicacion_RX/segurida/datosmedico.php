@@ -11,7 +11,7 @@ if ($_SESSION){
         die("Error al conectar: " . mysqli_connect_error());
     }
 
-    $result = $mysqli->query("SELECT * FROM `medico` WHERE (`medico`.`indmedico` ='$medico')");
+    $result = $mysqli->query("SELECT * FROM `admistracion` WHERE (`admistracion`.`indmedico` ='$medico')");
     $row = $result->fetch_array(MYSQLI_ASSOC);
 
     $resul = $mysqli->query("SELECT count(ind) as contSuma FROM pedido WHERE indmedico='$medico' ORDER BY ind DESC");
@@ -65,7 +65,7 @@ if ($_POST) {
 
 
     if (!empty($nombre)) {
-        $insert = "UPDATE `medico` SET `nombre` = '$nombre', `apellido` = '$apellido', `usuario` = '$user', `contrasena` = '$pass', `clinica` = '$clinica', `FechaNac` = '$fecha' WHERE `medico`.`indmedico` = $id; ";
+        $insert = "UPDATE `admistracion` SET `nombre` = '$nombre', `apellido` = '$apellido', `usuario` = '$user', `contrasena` = '$pass', `clinica` = '$clinica', `FechaNac` = '$fecha' WHERE `admistracion`.`indmedico` = $id; ";
         $query = mysqli_query($mysqli, $insert);
         echo "<script>location.href='../pacientes/clinica.php?indmedico=".$row['indmedico']."'</script>";
         echo '<script>swal("Exito Datos Guardados"); </script>';

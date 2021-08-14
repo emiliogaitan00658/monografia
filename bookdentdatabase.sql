@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medico`
+-- Estructura de tabla para la tabla `admistracion`
 --
 
 CREATE TABLE `medico` (
@@ -42,7 +42,7 @@ CREATE TABLE `medico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `medico`
+-- Volcado de datos para la tabla `admistracion`
 --
 
 INSERT INTO `medico` (`indmedico`, `nombre`, `apellido`, `usuario`, `contrasena`, `clinica`, `Telefono`, `FechaNac`, `Correo`, `Departamento`, `sexo`) VALUES
@@ -832,7 +832,7 @@ INSERT INTO `sucursales` (`indsucursal`, `nombre_sucursal`, `user_sucursal`, `pa
 --
 
 --
--- Indices de la tabla `medico`
+-- Indices de la tabla `admistracion`
 --
 ALTER TABLE `medico`
   ADD PRIMARY KEY (`indmedico`);
@@ -855,7 +855,7 @@ ALTER TABLE `sucursales`
 --
 
 --
--- AUTO_INCREMENT de la tabla `medico`
+-- AUTO_INCREMENT de la tabla `admistracion`
 --
 ALTER TABLE `medico`
   MODIFY `indmedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187699406;

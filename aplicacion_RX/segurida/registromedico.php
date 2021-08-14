@@ -43,10 +43,10 @@ if ($_POST) {
 
     if (!empty($nombre) and !empty($correo)) {
         $pinunico=rand(56000000, 220000000);;
-        $insert = "INSERT INTO `medico` (`indmedico`, `nombre`, `apellido`, `usuario`, `contrasena`, `clinica`, `Telefono`, `FechaNac`, `Correo`, `Departamento`, `sexo`) VALUES ('$pinunico', '$nombre', '$apellido', '$usuario', '$pass', NULL, NULL, NULL, '$correo', '$depart', NULL);";
+        $insert = "INSERT INTO `admistracion` (`indmedico`, `nombre`, `apellido`, `usuario`, `contrasena`, `clinica`, `Telefono`, `FechaNac`, `Correo`, `Departamento`, `sexo`) VALUES ('$pinunico', '$nombre', '$apellido', '$usuario', '$pass', NULL, NULL, NULL, '$correo', '$depart', NULL);";
         $query = mysqli_query($mysqli, $insert);
         
-        $result = $mysqli->query("SELECT * FROM medico WHERE Correo='$correos'");
+        $result = $mysqli->query("SELECT * FROM admistracion WHERE Correo='$correos'");
         $row = $result->fetch_array(MYSQLI_ASSOC);
 
         date_default_timezone_set('America/Managua');

@@ -53,7 +53,7 @@ include_once '../segurida/registromedico.php';
                     <ul class="right  maximo">
                         <li><a href="#" class="black-text" onclick="rx1()"><i class="icon-search"></i></a></li>
                         <li><a class="waves-effect waves-light  black-text" href="#" onclick="rx2()"><i class="icon-user-plus "> </i></a>
-                        <li><a href="../../publico/publicar.php" class="black-text"><i class="icon-arrow-left2 "></i></a></li>
+                        <li><a href="../../publicar.php" class="black-text"><i class="icon-arrow-left2 "></i></a></li>
                     </ul>
                 </div>
             </nav>

@@ -6,7 +6,7 @@
  * Time: 03:38 PM
  */
 //$mysqli = new mysqli("localhost", "root", "", "workhome");
-//$mysqli = new mysqli("localhost", "root", "", "medico");
+//$mysqli = new mysqli("localhost", "root", "", "admistracion");
 
 $mysqli = new mysqli("localhost", "root", "", "bookdentdatabase");
 //$mysqli = new mysqli("mysql.hostinger.com", "u893429626_pacie", "*.*@NTONIO1997", "u893429626_medic");

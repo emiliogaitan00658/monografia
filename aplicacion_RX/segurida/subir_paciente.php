@@ -14,12 +14,12 @@ if (mysqli_connect_errno()) {
     die("Error al conectar: " . mysqli_connect_error());
 }
 
-$result = $mysqli->query("SELECT `medico`.*, `medico`.`indmedico` FROM `medico` WHERE (`medico`.`indmedico` ='$id')");
+$result = $mysqli->query("SELECT `admistracion`.*, `admistracion`.`indmedico` FROM `admistracion` WHERE (`admistracion`.`indmedico` ='$id')");
 $medico = $result->fetch_array(MYSQLI_ASSOC);
 
 if ($_POST) {
     $unir = '../subir/' . $id . '/';
-    $id = $_GET['medico'];
+    $id = $_GET['admistracion'];
     $nombre_imagen = $unir . $_FILES['subir']['name'];
     $nombre_paciente = $_POST['nombre_completo'];
     $edad = $_POST['edad'];

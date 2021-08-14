@@ -11,7 +11,7 @@ if ($_SESSION){
     if (mysqli_connect_errno()) {
         die("Error al conectar: " . mysqli_connect_error());
     }
-    $result = $mysqli->query("SELECT * FROM `medico` WHERE (`medico`.`indmedico` ='$medico')");
+    $result = $mysqli->query("SELECT * FROM `admistracion` WHERE (`admistracion`.`indmedico` ='$medico')");
     $row = $result->fetch_array(MYSQLI_ASSOC);
     if (!empty($row)) {
 
@@ -33,7 +33,7 @@ if ($_POST) {
     $fecha= $_POST['fecha'];
 
     if (!empty($nombre)) {
-        $insert = "UPDATE `medico` SET `nombre` = '$nombre', `apellido` = '$apellido', `usuario` = '$user', `contrasena` = '$pass', `Telefono` = '$telefono', `Correo` = '$correo', `Departamento` = '', `sexo` = '' WHERE `medico`.`indmedico` = $id;";
+        $insert = "UPDATE `admistracion` SET `nombre` = '$nombre', `apellido` = '$apellido', `usuario` = '$user', `contrasena` = '$pass', `Telefono` = '$telefono', `Correo` = '$correo', `Departamento` = '', `sexo` = '' WHERE `admistracion`.`indmedico` = $id;";
         $query = mysqli_query($mysqli, $insert);
 
     }

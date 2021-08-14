@@ -41,7 +41,7 @@ if ($_POST) {
         if (mysqli_connect_errno()) {
             die("Error al conectar: " . mysqli_connect_error());
         }
-        $result = $mysqli->query("SELECT * FROM `medico` WHERE `Correo` LIKE '$recuperar'");
+        $result = $mysqli->query("SELECT * FROM `admistracion` WHERE `Correo` LIKE '$recuperar'");
         $row = $result->fetch_array(MYSQLI_ASSOC);
         if (!empty($row)) {
             $nombre = $row['nombre'];
