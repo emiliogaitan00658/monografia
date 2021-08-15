@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2021 a las 02:04:47
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 15-08-2021 a las 03:07:04
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `admistracion`
+-- Estructura de tabla para la tabla `acceso`
+--
+
+CREATE TABLE `acceso` (
+  `indacceso` int(11) NOT NULL,
+  `temporalacceso` varchar(100) DEFAULT NULL,
+  `indmedico` int(11) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `indsucursal` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria_admistracion`
+--
+
+CREATE TABLE `categoria_admistracion` (
+  `indadmistracion` int(11) NOT NULL,
+  `detalle` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `categoria_admistracion`
+--
+
+INSERT INTO `categoria_admistracion` (`indadmistracion`, `detalle`) VALUES
+(1, 'doctor');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `medico`
 --
 
 CREATE TABLE `medico` (
@@ -32,7 +65,7 @@ CREATE TABLE `medico` (
   `nombre` varchar(50) DEFAULT NULL,
   `apellido` varchar(50) DEFAULT NULL,
   `usuario` varchar(50) DEFAULT NULL,
-  `contrasena` varchar(50) DEFAULT NULL,
+  `contrasena` varchar(100) DEFAULT NULL,
   `clinica` varchar(50) DEFAULT NULL,
   `Telefono` varchar(50) DEFAULT NULL,
   `FechaNac` varchar(50) DEFAULT NULL,
@@ -42,7 +75,7 @@ CREATE TABLE `medico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `admistracion`
+-- Volcado de datos para la tabla `medico`
 --
 
 INSERT INTO `medico` (`indmedico`, `nombre`, `apellido`, `usuario`, `contrasena`, `clinica`, `Telefono`, `FechaNac`, `Correo`, `Departamento`, `sexo`) VALUES
@@ -814,25 +847,40 @@ CREATE TABLE `sucursales` (
   `indsucursal` int(11) NOT NULL,
   `nombre_sucursal` varchar(50) DEFAULT NULL,
   `user_sucursal` varchar(50) DEFAULT NULL,
-  `pass_sucursal` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `pass_sucursal` varchar(50) DEFAULT NULL,
+  `indadmistracion` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `sucursales`
 --
 
-INSERT INTO `sucursales` (`indsucursal`, `nombre_sucursal`, `user_sucursal`, `pass_sucursal`) VALUES
-(1, 'Cental', 'orthodental2018', 'orthodental2018'),
-(2, 'Managua', 'managua', 'managua2018*'),
-(3, 'Masaya', 'Masaya', 'oc*2018'),
-(6, 'Chontales', 'juigalpa', 'juigalpa2019*');
+INSERT INTO `sucursales` (`indsucursal`, `nombre_sucursal`, `user_sucursal`, `pass_sucursal`, `indadmistracion`) VALUES
+(1, 'Cental', 'orthodental2018', 'orthodental2018', 1),
+(2, 'Managua', 'managua', 'managua2018*', 1),
+(3, 'Masaya', 'Masaya', 'oc*2018', 1),
+(6, 'Chontales', 'juigalpa', 'juigalpa2019*', 1);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `admistracion`
+-- Indices de la tabla `acceso`
+--
+ALTER TABLE `acceso`
+  ADD PRIMARY KEY (`indacceso`),
+  ADD KEY `indsucursal` (`indsucursal`),
+  ADD KEY `indmedico` (`indmedico`);
+
+--
+-- Indices de la tabla `categoria_admistracion`
+--
+ALTER TABLE `categoria_admistracion`
+  ADD PRIMARY KEY (`indadmistracion`);
+
+--
+-- Indices de la tabla `medico`
 --
 ALTER TABLE `medico`
   ADD PRIMARY KEY (`indmedico`);
@@ -848,14 +896,27 @@ ALTER TABLE `pedido`
 -- Indices de la tabla `sucursales`
 --
 ALTER TABLE `sucursales`
-  ADD PRIMARY KEY (`indsucursal`);
+  ADD PRIMARY KEY (`indsucursal`),
+  ADD KEY `indadmistracion` (`indadmistracion`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `admistracion`
+-- AUTO_INCREMENT de la tabla `acceso`
+--
+ALTER TABLE `acceso`
+  MODIFY `indacceso` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `categoria_admistracion`
+--
+ALTER TABLE `categoria_admistracion`
+  MODIFY `indadmistracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
   MODIFY `indmedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187699406;
@@ -877,10 +938,23 @@ ALTER TABLE `sucursales`
 --
 
 --
+-- Filtros para la tabla `acceso`
+--
+ALTER TABLE `acceso`
+  ADD CONSTRAINT `acceso_ibfk_1` FOREIGN KEY (`indsucursal`) REFERENCES `sucursales` (`indsucursal`),
+  ADD CONSTRAINT `acceso_ibfk_2` FOREIGN KEY (`indmedico`) REFERENCES `medico` (`indmedico`);
+
+--
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`indmedico`) REFERENCES `medico` (`indmedico`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `sucursales`
+--
+ALTER TABLE `sucursales`
+  ADD CONSTRAINT `sucursales_ibfk_1` FOREIGN KEY (`indadmistracion`) REFERENCES `categoria_admistracion` (`indadmistracion`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
