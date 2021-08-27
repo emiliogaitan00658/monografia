@@ -1,6 +1,6 @@
 body{
-    /*background-color: #f5f4f1!important;*/
-    background-color: #dfdfdf!important;
+    background-color: #f5f4f1!important;
+    /*background-color: #dfdfdf!important;*/
 }
 .linea{
     border-bottom: 1px solid #0d0d0d;
@@ -11,7 +11,9 @@ body{
     font-weight: bold !important;
     font-style: normal !important;
 }
-
+.borde1{
+    margin: 1em!important;
+}
 .vr22 {
     display: inline-block !important;
     width: 100% !important;

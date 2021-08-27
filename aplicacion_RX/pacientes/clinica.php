@@ -19,7 +19,7 @@ $varte = $row['usuario'];
 $varte2 = $row['usuario'];
 
 if (ctype_digit($varte) or $varte2 == "admin") {
-     echo '<script>
+    echo '<script>
     swal({
         title:"Mensaje",
         text:"Debes de Cambiar tu usuario y contraseña",
@@ -97,7 +97,8 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                                     width="20%">EcoRadiología</a>
                         <a href="../../" class="brand-logo white-text tr minimo">EcoRadiología</a>
                         <ul class="right  maximo">
-                            <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['ip']; ?>" class="black-text"><i class="icon-arrow-left2 "></i></a>
+                            <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['ip']; ?>" class="black-text"><i
+                                            class="icon-arrow-left2 "></i></a>
                             </li>
                         </ul>
                     </div>
@@ -287,7 +288,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
 
     <div id="nn4" style="display:none;">
         <div class="no-margenes modal-body">
-            <section class="container white jk modal-content">
+            <section class="white modal-content center-block" style="width: 85%">
                 <br class="maximo">
                 <div class="container">
                     <br class="minimo">
@@ -298,67 +299,71 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                 <form action="../segurida/datosmedico.php?indmedico=<?php echo $row['indmedico']; ?>" method="post"
                       class="container">
                     <div>
-                        <p>ID_Medico:<?php echo $row['indmedico']; ?></p>
+                        <p style="font-size: 18px">ID_Medico: <b><?php echo $row['indmedico']; ?></b></p>
                         <hr class="z-depth-3">
                     </div>
-                    <section>
-                        <div>
+                    <section class="row" style="margin: 0%;">
+                        <div class="control-pares col-md-6">
                             <p>Nombres:</p>
                             <input type="text" name="nombre" placeholder="Nombres" value="<?php echo $row['nombre']; ?>"
                                    required
                                    style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
-                        <div>
+                        <div class="control-pares col-md-6" style="margin: 0%;">
                             <p>Apellidos:</p>
                             <input type="text" name="apellido" placeholder="Apellido"
                                    value="<?php echo $row['apellido']; ?>"
                                    required
                                    style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
-
-                        <div style="boder:1px solid red;">
-                            <div>
-                                <p>Usuario:</p>
-                                <input type="text" name="user" placeholder="Modificar Usuario"
-                                       value="<?php echo $row['usuario']; ?>" required
-                                       style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
-                            </div>
-                            <div>
-                                <p>Contraseña:</p>
-                                <input type="text" name="pass" placeholder="Contraseña"
-                                       value="<?php echo $row['contrasena']; ?>"
-                                       required
-                                       style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
-                            </div>
-
+                        <hr>
+                        <div class="control-pares col-md-6">
+                            <p>Usuario:</p>
+                            <input type="text" name="user" placeholder="Modificar Usuario"
+                                   value="<?php echo $row['usuario']; ?>" required
+                                   style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
-                        <div>
+                        <div class="control-pares col-md-6">
+                            <p>Contraseña:</p>
+                            <input type="password" name="pass" placeholder="Contraseña"
+                                   value="<?php echo $row['contrasena']; ?>"
+                                   required
+                                   style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
+                        </div>
+                        <div class="control-pares col-md-12">
+                            <p>***Desea recupera contraseña o cambiar</p>
+                        </div>
+                        <hr>
+                    </section>
+                    <section class="row" style="margin: 0%;">
+                        <div class="control-pares col-md-6">
                             <p>Nombre de Clinicas:</p>
                             <input type="text" name="clinica" placeholder="Nombre de Clinica"
                                    value="<?php echo $row['clinica']; ?>"
                                    style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
-                        <div>
+                        <div class="control-pares col-md-6">
                             <p>Correo:</p>
                             <input type="email" name="correo" placeholder="Correo" value="<?php echo $row['Correo']; ?>"
                                    required
                                    style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
 
-                        <div>
+                    </section>
+                    <section class="row" style="margin: 0%;">
+                        <div class="control-pares col-md-6">
                             <p>Telefono:</p>
                             <input type="text" name="telefono" placeholder="Telefono"
                                    value="<?php echo $row['Telefono']; ?>"
                                    style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
-                        <div>
+                        <div class="control-pares col-md-6">
                             <p>Fecha de Nacimiento:</p>
-                            <input type="text" name="fecha" placeholder="Ejemplo:02/02/2018"
+                            <input type="date" name="fecha" placeholder="Ejemplo:02/02/2018"
                                    value="<?php echo $row['FechaNac']; ?>"
                                    style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                         </div>
                     </section>
-                    <br>
                     <section class="center center-align">
                         <hr class="z-depth-3">
                         <div>
@@ -371,5 +376,22 @@ if (ctype_digit($varte) or $varte2 == "admin") {
             </section>
         </div>
     </div>
-
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'edbaa8ec138f6f5a7a5c9505363528488dad2a6e';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
 <?php include "../../model/footer.php"; ?>

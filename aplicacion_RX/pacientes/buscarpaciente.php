@@ -263,6 +263,7 @@
                     <th>Edad</th>
                     <th>Estudio</th>
                     <th>Fecha</th>
+                    <th>Eliminar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -294,6 +295,7 @@
                     <td style="width: 10px !important;"><?php echo $pedido['edad']; ?></td>
                     <td><?php echo $p; ?></td>
                     <td><?php echo $pedido['Fecha']; ?></td>
+                    <td><a href=""><i class="icon-bin red white-text" style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
                 </tr>
                 <?php
                 }

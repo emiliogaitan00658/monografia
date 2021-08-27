@@ -3,16 +3,16 @@
         <div class="fixed navbar-fixed">
             <nav class="nav-color fixed">
                 <div class="nav-wrapper tr">
-                    <a href="../../index.php" class="brand-logo white-text tr pp maximo">Sistema de Radiografia
-                        Digital</a>
-                    <a href="../../index.php" class="brand-logo white-text tr minimo">Sistema de Radiografia Digital</a>
+                    <a href="../../index.php" class="brand-logo white-text tr pp maximo"><img src="../../img/logo.png" style="width: 20%" alt="">EcoRadiologíal</a>
+                    <a href="../../index.php" class="brand-logo white-text tr minimo">EcoRadiología</a>
                     <ul class="right  maximo">
-                        <li><a href="../../index.php" class="black-text">Regresar</a></li>
+                        <li><a href="../../index.php" class="black-text"><i class="icon-arrow-left2"></i></a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </nav>
+    <br>
     <section style="position: fixed;background-color:white;border-radius: 6px;width: 15%;margin: 6px;padding: 6px"
              class="z-depth-1">
         <p>Nota:</p>
@@ -32,6 +32,7 @@
         </form>
     </div>
     <br><br>
+    <br>
 <?php
 session_start();
 include_once '../segurida/conexion.php';
@@ -71,7 +72,7 @@ if ($_POST) {
             $mensaje .= "Usuario: " . $user . "\r\n";
             $mensaje .= "Contraseña: " . $pass . "\r\n";
             $mensaje .= "\r\n";
-            $mensaje .= "http://www.sistemaradiografiadigital.com/aplicacion_RX.php" . "\r\n";
+            $mensaje .= "http://www.ecoradiologia.com/aplicacion_RX.php" . "\r\n";
             $mensaje .= "\r\n";
             $mensaje .= "\r\n";
             $mensaje .= "Recuerda de Cambiar las Contraseña y usuario" . "\r\n";

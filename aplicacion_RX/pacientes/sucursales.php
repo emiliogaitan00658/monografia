@@ -28,7 +28,7 @@
                             width="20%">EcoRadiología</a>
                 <a href="index.php" class="brand-logo white-text tr minimo">EcoRadiología</a>
                 <ul class="right  maximo">
-                    <li><a href="ingresar.php" class="black-text"><i class="icon-cancel-circle small"></i></a></li>
+                    <li><a href="../../publicar.php" class="black-text"><i class="icon-cancel-circle small"></i></a></li>
                 </ul>
             </div>
         </nav>

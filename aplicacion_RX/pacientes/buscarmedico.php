@@ -22,6 +22,8 @@
 </head>
 <?php
 include_once '../segurida/registromedico.php';
+include_once '../../BD-Connection/conection.php';
+include_once '../../BD-Connection/datos_clientes.php';
 ?>
 <script>
     function rx1() {
@@ -45,11 +47,11 @@ include_once '../segurida/registromedico.php';
         <div class="fixed navbar-fixed">
             <nav class="nav-color fixed">
                 <div class="nav-wrapper tr">
-                    <a href="#" class="brand-logo white-text tr pp maximo"> <img
+                    <a href="../../publicar.php" class="brand-logo white-text tr pp maximo"> <img
                                 src="../../img/logo.png"
                                 alt="" class="responsive-img"
                                 width="20%">EcoRadiología</a>
-                    <a href="../../index.php" class="brand-logo white-text tr minimo">EcoRadiología</a>
+                    <a href="../../publicar.php" class="brand-logo white-text tr minimo">EcoRadiología</a>
                     <ul class="right  maximo">
                         <li><a href="#" class="black-text" onclick="rx1()"><i class="icon-search"></i></a></li>
                         <li><a class="waves-effect waves-light  black-text" href="#" onclick="rx2()"><i class="icon-user-plus "> </i></a>
@@ -76,7 +78,7 @@ include_once '../segurida/registromedico.php';
                 } ?>" required>
                 <br>
                 <span style="width: 25px!important;padding: 1em; border: 1px solid black;" class="center-align">Contraseña:</span>
-                <input type="text" name="pass" placeholder="Contraseña" value="<?php echo rand(560000, 22000); ?>" class="inputvalor" style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
+                <input type="text" name="pass" placeholder="Contraseña" value="<?php echo datos_clientes::generador_codigo($mysqli); ?>" class="inputvalor" style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
                 <br>
                 <span style="width: 35px!important;padding: 1em; border: 1px solid black;" class="center-align">Correo:</span>
                 <input type="email" name="correo" placeholder="Correo" value="<?php if ($_POST) {

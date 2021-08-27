@@ -5,11 +5,11 @@ $_SESSION['pedidopaciente'] = $_GET['paciente'];
 $pedidomedico = $_SESSION['pedidomedico'];
 $pedidopaciente = $_SESSION['pedidopaciente'];
 
-/*  datos admistracion */
+/*  datos medico */
 if (mysqli_connect_errno()) {
     die("Error al conectar: " . mysqli_connect_error());
 }
-$result = $mysqli->query("SELECT * FROM `admistracion` WHERE (`admistracion`.`indmedico` ='$pedidomedico');");
+$result = $mysqli->query("SELECT * FROM `medico` WHERE (`medico`.`indmedico` ='$pedidomedico');");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
 $res = $mysqli->query("SELECT * FROM `paciente` WHERE (`paciente`.`indpaciente` ='$pedidopaciente');");
@@ -17,7 +17,7 @@ $row2 = $res->fetch_array(MYSQLI_ASSOC);
 
 if ($_POST) {
     $paciente = $_POST['paciente'];
-    $medico = $_POST['admistracion'];
+    $medico = $_POST['medico'];
 
     if (!empty($_POST['edad'])) {
         $edad = $_POST['edad'];

@@ -19,10 +19,10 @@ if ($_POST) {
 
     if (!empty($nombre)) {
 
-        $insert = "UPDATE `admistracion` SET `nombre` = '$nombre', `apellido` = '$apellido', `usuario` = '$user', `contrasena` = '$pass', `clinica` = '$clinica', `Telefono` = '$telefono', `FechaNac` = '$fecha', `sexo` = '' WHERE `admistracion`.`indmedico` = $id; ";
+        $insert = "UPDATE `medico` SET `nombre` = '$nombre', `apellido` = '$apellido', `usuario` = '$user', `contrasena` = '$pass', `clinica` = '$clinica', `Telefono` = '$telefono', `FechaNac` = '$fecha', `sexo` = '' WHERE `medico`.`indmedico` = $id; ";
         $query = mysqli_query($mysqli, $insert);
         ?>
-        <script>location.href = "../pacientes/buscarpaciente.php?admistracion=<?php echo $id?>";
+        <script>location.href = "../pacientes/buscarpaciente.php?medico=<?php echo $id?>";
             alert("Exito Datos Guardados");
         </script>
 
@@ -31,7 +31,7 @@ if ($_POST) {
 
 } else {
     ?>
-    <script>location.href = "../pacientes/buscarpaciente.php?admistracion=<?php echo $id?>";</script>
+    <script>location.href = "../pacientes/buscarpaciente.php?medico=<?php echo $id?>";</script>
     <?php
 }
 ?>

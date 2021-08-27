@@ -17,7 +17,7 @@ if ($_POST) {
         if (mysqli_connect_errno()) {
             die("Error al conectar: " . mysqli_connect_error());
         }
-        $result = $mysqli->query("SELECT admistracion.indmedico,admistracion.usuario FROM admistracion WHERE ((admistracion.usuario ='$usuario') AND (admistracion.contrasena ='$pass'))");
+        $result = $mysqli->query("SELECT medico.indmedico,medico.usuario FROM medico WHERE ((medico.usuario ='$usuario') AND (medico.contrasena ='$pass'))");
         $row = $result->fetch_array(MYSQLI_ASSOC);
 
         if (!empty($row)) {

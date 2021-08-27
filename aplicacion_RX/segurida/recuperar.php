@@ -13,7 +13,7 @@ if($correos==""){
     echo "<script>location.href='../../index.php'</script>";
 }
 
-$result = $mysqli->query("SELECT * FROM admistracion WHERE Correo='$correos'");
+$result = $mysqli->query("SELECT * FROM medico WHERE Correo='$correos'");
 $row = $result->fetch_array(MYSQLI_ASSOC);
 if (!empty($row)) {
 

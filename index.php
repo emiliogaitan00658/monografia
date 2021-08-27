@@ -1,6 +1,6 @@
 ﻿<nav>
     <div class="nav-wrapper" style="background-color: #2B394D">
-        <a href="#!" class="brand-logo center">EcoRadiología</a>
+        <a href="#!" class="brand-logo center"><img src="img/logo.png" width="6%" alt="">EcoRadiología</a>
         <ul class="left hide-on-med-and-down">
             <li><a href="sass.html">Inicio</a></li>
             <li><a href="badges.html">Soporte</a></li>
@@ -13,6 +13,17 @@
 include_once "model/header.php";
 include_once 'aplicacion_RX/segurida/seguridadlogin.php';
 ?>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'edbaa8ec138f6f5a7a5c9505363528488dad2a6e';
+    window.smartsupp||(function(d) {
+        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+        c.type='text/javascript';c.charset='utf-8';c.async=true;
+        c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+</script>
 <div class="maximo">
     <div class="marco2 right">
         <div class="medic white">

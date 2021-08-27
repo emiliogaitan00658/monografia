@@ -55,10 +55,10 @@ if ($_POST) {
 
     $result = $mysqli->query("SELECT * FROM `sucursales` WHERE `user_sucursal` LIKE '$user' AND `pass_sucursal` LIKE '$pass'");
     $rows = $result->fetch_array(MYSQLI_ASSOC);
-    $_SESSION['sucursal'] = $rows['indsucursal'];
 
     if (!empty($rows)) {
         if ($rows['user_sucursal'] == $user and $rows['pass_sucursal'] == $pass) {
+            $_SESSION['sucursal'] = $rows['indsucursal'];
             echo "<script>location.href='publicar.php'</script>";
         } else {
             echo '<script>swal("Mensaje","Contaseña o Usuario No identificada","error"); </script>';

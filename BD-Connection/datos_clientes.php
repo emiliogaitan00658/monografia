@@ -71,19 +71,19 @@ class datos_clientes
 
 
 
-    public static function Verificar_generador_codigo($mysqli)
+    public static function generador_codigo($mysqli)
     {
-        $longitud = 100;
+        $longitud = 6;
         $key = '';
         $pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
         $max = strlen($pattern) - 1;
         for ($i = 0; $i < $longitud; $i++) $key .= $pattern{mt_rand(0, $max)};
 
-        $result = $mysqli->query(" SELECT * FROM `factura` WHERE indtemp='$key'");
+        $result = $mysqli->query("SELECT * FROM `medico` WHERE medico.contrasena='$key'");
         $row = $result->fetch_array(MYSQLI_ASSOC);
         if (!empty($row)) {
             return "true";
-            self::Verificar_generador_codigo($mysqli);
+            self::generador_codigo($mysqli);
         } else {
             return $key;
         }

@@ -5,7 +5,7 @@
  * Date: 05/03/2020
  * Time: 03:38 PM
  */
-$mysqli = new mysqli("localhost", "root", "", "contabilidad");
+$mysqli = new mysqli("localhost", "root", "", "bookdentdatabase");
 //$mysqli = new mysqli("mysql.hostinger.com", "u893429626_orthodentalsa", "@p2bH?Y8Y", "u893429626_prestamos");
 
 if (mysqli_connect_errno()) {
