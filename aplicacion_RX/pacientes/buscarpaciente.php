@@ -128,16 +128,24 @@
                 <b><?php echo $medico['nombre'] . " " . $medico['apellido']; ?></b> <span class="right right-align">Fecha:<?php echo $fecha = $hoy = date("j/n/Y"); ?></span>
             </p>
             <form action="buscarpaciente.php?medico=<?php echo $id; ?>" class="container" method="post" enctype="multipart/form-data">
-                <p class="control-label">Nombre de Paciente:</p>
-                <input type="text" name="nombre_completo" placeholder="Nombre Completo" class="form-control" required
-                       style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;">
-                <p class="control-label">Edad:</p>
-                <input type="text" name="edad" placeholder="Edad Paciente" required
-                       style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;" class="form-control">
+                <br>
+                <br>
+                <h5>Completar campos Solicitado:</h5>
+                <section class="row">
+                    <div class="control-pares col-md-8">
+                        <input type="text" name="nombre_completo" placeholder="Nombre Completo" class="form-control" required
+                               style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;">
+                    </div>
+                    <div class="control-pares col-md-3">
+                        <input type="number" name="edad" placeholder="Edad Paciente" required
+                               style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;" class="form-control">
+                    </div>
+                </section>
                 <p class="control-label">Tipos de Estudio:</p>
+                <hr>
                 <div class="container">
-                    <select class="left left-align browser-default black white-text" name="estudio" required>
-                        <option value="" disabled="" selected="">Opcion Estudio</option>
+                    <select class="left left-align browser-default black white-text" style="font-size: 18px" size="" name="estudio" required>
+                        <option value="" disabled="" selected="" style="font-size: 18px">Opcion Estudio</option>
                         <option value="1">Radiografía Panoramica</option>
                         <option value="2">Radiografía ATM</option>
                         <option value="3">Radiografía Cefalometrica</option>
@@ -145,8 +153,7 @@
                         <option value="4">Otro Estudio</option>
                     </select>
                 </div>
-                <br>
-                <br>
+                <hr>
                 <div>
                     <p>Archivo de la imagen o estudio PDF:</p>
                     <span>Si el documento es un PDF o RAR debes de poner como otro estudio. <hr
@@ -183,7 +190,7 @@
                 <p>Nota : Si dispone de los datos del doctor puede ingresar en el formulario (Solo Personal Autorizado).</p>
                 <form action="editar_doctor_datos_personales.php" method="post" enctype="multipart/form-data">
 
-                    <span style="width:15%!important; padding: 1em;">Codigo:</span>
+                    <span style="width:15%!important; padding: 1em;">Codigo Unico:</span>
                     <input type="text" name="id" placeholder="indmedico" required
                            style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em; width: 10%"
                            value="<?php echo $medico['indmedico']; ?>" >
@@ -208,9 +215,10 @@
                     <br>
 
                     <span style="width:15%!important; padding: 1em;"><b>Contraseña:</b></span>
-                    <input type="text" name="pass" placeholder="Contraseña" required
+                    <input type="password" name="pass" placeholder="Contraseña" required
                            style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em; width: 50%"
-                           value="<?php echo $medico['contrasena']; ?>">
+                           value="<?php echo $medico['contrasena']; ?>"  readonly=readonly>
+                    <button class="btn danger" onclick="" style="border-radius: 6px" readonly >Restablecer contraseña</button>
                     <br>
                     <hr>
                     <span style="width:15%!important; padding: 1em;">Correo:</span>
@@ -230,7 +238,7 @@
                     <br>
                     <br>
                     <span style="width:15%!important; padding: 1em;">Fecha de Nacimiento:</span>
-                    <input type="text" name="fecha" placeholder="Numero de Telefono"
+                    <input type="date" name="fecha" placeholder="Fecha Nacimiento"
                            style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em; width: 50%"
                            value="<?php echo $medico['FechaNac']; ?>">
                     <hr>

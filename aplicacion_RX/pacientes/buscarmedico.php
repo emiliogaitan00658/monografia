@@ -1,26 +1,5 @@
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../../img/logo.png"/>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>.. ::EcoRadiología:: .. </title>
-    <link rel="stylesheet" href="../../css/carusel/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/carusel/css/bootstrap-theme.min.css">
-    <link href="../../css/framework/css.iconos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../icomoon/style.css">
-    <link type="text/css" rel="stylesheet" href="../../css/framework/materialize.min.css" media="screen,projection"/>
-    <link rel="stylesheet" href="../../css/adaptacion_paramobiles.css">
-    <link rel="stylesheet" href="../../css/css.index.css">
-    <link rel="stylesheet" href="../../css/medico.css">
-    <script src="../../css/buscador_applicacion/js/jquery.js"></script>
-    <script src="../../css/buscador_applicacion/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="../../css/buscador_applicacion/css/estilos.css">
-    <script type="text/javascript" src="../../js/sweetalert.min.js"></script>
-</head>
 <?php
+include "../modelo/header.php";
 include_once '../segurida/registromedico.php';
 include_once '../../BD-Connection/conection.php';
 include_once '../../BD-Connection/datos_clientes.php';
@@ -32,16 +11,14 @@ include_once '../../BD-Connection/datos_clientes.php';
         div1.style.display = 'block';
         div2.style.display = 'none';
     }
-
     function rx2() {
         var div1 = document.getElementById('quitar1');
         var div2 = document.getElementById('quitar2');
         div1.style.display = 'none';
         div2.style.display = 'block';
     }
-
 </script>
-<body>
+
 <div class="maximo">
     <nav>
         <div class="fixed navbar-fixed">
@@ -159,22 +136,6 @@ include_once '../../BD-Connection/datos_clientes.php';
     </div>
 
     <script src="../../css/buscador_applicacion/js/buscador.js"></script>
-    <footer class="page-footer  z-depth-3" style="background-color: #2B394D">
-        <div class="container" style="background-color: #2B394D">
-            <div class="row" style="background-color: #2B394D">
-                <div class="col l6 s12">
-                    <h5 class="white-text"><img src="img/logo.png" alt="" class="responsive-img" style="width: 15%">EcoRadiología</h5>
-                    <p class="white-text text-lighten-4">
-                        Ecoradiología Nuestra plataforma EcoRadiolgía permite al dentista socio y paciente acceder a las
-                        imágenes y diagnósticos: En tiempo real (conforme se va elaborando el estudio) De por vida, los 365
-                        días del año Desde cualquier dispositivo (móvil, tablet, computadora, laptop).</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-<script src="../../css/carusel/js/jquery-3.1.0.min.js"></script>
-<script src="../../css/carusel/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../js/nuevo.js"></script>
-<script type="text/javascript" src="../../js/materialize.min.js"></script>
-<script type="text/javascript" src="../../js/personal.js"></script>
-</html>
+<?php
+include "../modelo/footer.php";
+?>

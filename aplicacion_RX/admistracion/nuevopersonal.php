@@ -138,8 +138,6 @@
             </div>
         </div>
     </footer>
-
-
     <script src="../../css/carusel/js/jquery-3.1.0.min.js"></script>
     <script src="../../css/carusel/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/nuevo.js"></script>

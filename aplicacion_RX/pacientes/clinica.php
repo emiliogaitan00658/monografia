@@ -202,6 +202,15 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                 <p class="bg-info" style="padding:0.5em;"> <?php echo $ContSuma['contSuma']; ?> Total de
                     publicación.</p>
                 <br>
+                <div class="container">
+                    <div class="center-block">
+                        <label for="file" class="control-label" style="font-size: 18px;">Limite de Memoria:</label>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </div>
@@ -211,33 +220,45 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                 <br class="maximo">
                 <div class="container">
                     <br class="minimo">
-                    <h5 class="modal-title"><i class="icon-mail text-primary icontamano"></i>
-                        Correo de Notificación</h5>
+                    <span><i class="icon-info text-primary icontamano"></i></span><h5 class="modal-title">
+                        Informaciòn</h5>
                 </div>
                 <hr>
-                <form action="../segurida/consutas_ayuda.php?indmedico=<?php echo $row['indmedico']; ?>" method="post"
-                      class="container">
-                    <section>
-                        <p>Con este correo usted se le va a estar notificando acerca de actualizaciones o modificiones
-                            de su perfil asi
-                            mismo estaremos enviando todos los tipos de estudios de sus paciente.</p>
-                        <div>
-                            <p>Correo:</p>
-                            <input type="text" name="txt1" placeholder="Correo" value="<?php echo $row['Correo']; ?>"
-                                   required
-                                   style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
-                        </div>
-                    </section>
-                    <br>
-                    <section class="center center-align">
-                        <hr class="z-depth-3">
-                        <div>
-                            <input type="submit" value="Update" class="btn black white-text">
-                        </div>
-                        <hr class="z-depth-3">
-                    </section>
-                    <br>
-                </form>
+                <div>
+                    <?php
+                    $dir = "../subir/161809360/";
+                          echo "Total : " . Fsize($dir);
+                    function Fsize($dir)
+                    {
+                        clearstatcache();
+                        $cont = 0;
+                        if (is_dir($dir)) {
+                            if ($gd = opendir($dir)) {
+                                while (($archivo = readdir($gd)) !== false) {
+                                    if ($archivo != "." && $archivo != "..") {
+                                        if (is_dir($archivo)) {
+                                            $cont += Fsize($dir . "/" . $archivo);
+                                        } else {
+                                            $cont += sprintf("%u", filesize($dir . "/" . $archivo));
+                                            //echo  "archivo : " . $dir . "/" . $archivo . "&nbsp;&nbsp;" . filesize($dir . "/" . $archivo) . "<br />";
+                                        }
+                                    }
+                                }
+                                closedir($gd);
+                            }
+                        }
+                        return "PESO OBTENIDO: ".formatBytes($cont, $precision = 2);
+                    }
+
+                    function formatBytes($bytes, $precision = 2) {
+                        $unit = ["B", "KB", "MB", "GB"];
+                        $exp = floor(log($bytes, 1024)) | 0;
+                        return round($bytes / (pow(1024, $exp)), $precision).$unit[$exp];
+                    }
+                    ?>
+
+
+                </div>
             </section>
         </div>
     </div>
@@ -376,22 +397,4 @@ if (ctype_digit($varte) or $varte2 == "admin") {
             </section>
         </div>
     </div>
-    <!-- Smartsupp Live Chat script -->
-    <script type="text/javascript">
-        var _smartsupp = _smartsupp || {};
-        _smartsupp.key = 'edbaa8ec138f6f5a7a5c9505363528488dad2a6e';
-        window.smartsupp || (function (d) {
-            var s, c, o = smartsupp = function () {
-                o._.push(arguments)
-            };
-            o._ = [];
-            s = d.getElementsByTagName('script')[0];
-            c = d.createElement('script');
-            c.type = 'text/javascript';
-            c.charset = 'utf-8';
-            c.async = true;
-            c.src = 'https://www.smartsuppchat.com/loader.js?';
-            s.parentNode.insertBefore(c, s);
-        })(document);
-    </script>
 <?php include "../../model/footer.php"; ?>
