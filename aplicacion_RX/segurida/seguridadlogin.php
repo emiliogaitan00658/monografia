@@ -1,5 +1,7 @@
 ﻿<?php
-include_once 'conexion.php';
+include_once 'BD-Connection/conection.php';
+include_once 'BD-Connection/datos_clientes.php';
+session_start();
 if ($_POST) {
     $usuario = "";
     $pass = "";
@@ -9,7 +11,8 @@ if ($_POST) {
         echo '<script>swal("Ingresar Usuario"); </script>';
     }
     if (!empty($_POST['pass'])) {
-        $pass = $_POST['pass'];
+        $pass1 = $_POST['pass'];
+        $pass=Password::hash($pass1);
     } else {
         echo '<script>swal("Ingresar contraseña"); </script>';
     }

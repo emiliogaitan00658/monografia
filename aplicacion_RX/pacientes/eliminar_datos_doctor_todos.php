@@ -17,10 +17,10 @@ if($_GET){
         echo "<script>location.href='buscarpaciente.php?admistracion=".$eliminar."'</script>";
     }else{
 
-        $ress = $mysqli->query("SELECT * FROM admistracion WHERE indmedico='$eliminar'");
+        $ress = $mysqli->query("SELECT * FROM medico WHERE indmedico='$eliminar'");
         $med = $ress->fetch_array(MYSQLI_ASSOC);
 
-        $result = $mysqli->query("DELETE FROM `admistracion` WHERE `admistracion`.`indmedico` = '$eliminar'");
+        $result = $mysqli->query("DELETE FROM `medico` WHERE `medico`.`indmedico` = '$eliminar'");
         $query = mysqli_query($mysqli, $result);
 
         echo "<script>location.href='buscarmedico.php?ip=".$med['Departamento']."'</script>";

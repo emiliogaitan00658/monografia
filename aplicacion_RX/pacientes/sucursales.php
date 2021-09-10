@@ -63,6 +63,7 @@
     </div>
 </section>
 <br>
+<hr>
 <footer class="page-footer  z-depth-3" style="background-color: #2B394D">
     <div class="container" style="background-color: #2B394D">
         <div class="row" style="background-color: #2B394D">

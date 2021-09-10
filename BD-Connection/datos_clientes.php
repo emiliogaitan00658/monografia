@@ -99,11 +99,40 @@ class datos_clientes
         }
         return false;
     }
-
-
+    public static function correo_exites($correo, $mysqli)
+    {
+        $result = $mysqli->query("SELECT * FROM `medico` WHERE Correo='$correo'");
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        if (!empty($row)) {
+            return 1;
+        }else{
+            return 0;
+        }
+        return 0;
+    }
+    public static function datos_medico($id, $mysqli)
+    {
+        $result = $mysqli->query("SELECT `medico`.*, `medico`.`indmedico` FROM `medico` WHERE (`medico`.`indmedico` ='$id')");
+        $medico2 = $result->fetch_array(MYSQLI_ASSOC);
+        if (!empty($row)) {
+            return $medico2;
+        }else{
+            return 0;
+        }
+    }
     public static function entregar_matariales_bandera($indfactura,$bandera, $mysqli)
     {
         $insert = "UPDATE `factura` SET `bandera` = '$bandera' WHERE `factura`.`indfactura` = '$indfactura'";
+        $query = mysqli_query($mysqli, $insert);
+        return true;
+    }
+
+ public static function registro_webtranfer($nombre,$edad,$url,$id,$mysqli)
+    {
+        $fecha=self::fecha_get_pc_MYSQL();
+        $hora=self::hora_get_pc();
+        $insert = "INSERT INTO `webtranfer` (`indtraferencia`, `url_tranferencia`, `nombre_paciente`, `indmedico`, `edad`, `fecha`, `hora`)
+ VALUES (NULL, '$url', '$nombre', '$id', '$edad', '$fecha', '$hora');";
         $query = mysqli_query($mysqli, $insert);
         return true;
     }

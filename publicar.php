@@ -29,7 +29,7 @@ $_SESSION['sucursal'] = $_SESSION['sucursal'];
 $result = $mysqli->query("SELECT * FROM `sucursales` WHERE `indsucursal` LIKE '$ind'");
 $rows = $result->fetch_array(MYSQLI_ASSOC);
 
-$resul = $mysqli->query("SELECT medico.Departamento, COUNT(pedido.tipo_estudio) as contSuma FROM medico LEFT JOIN pedido ON pedido.indmedico = medico.indmedico WHERE medico.Departamento='$ind'");
+$resul = $mysqli->query("SELECT medico.indsucursal, COUNT(pedido.tipo_estudio) as contSuma FROM medico LEFT JOIN pedido ON pedido.indmedico = medico.indmedico WHERE medico.indsucursal='$ind'");
 $conteo = $resul->fetch_array(MYSQLI_ASSOC);
 
 ?>

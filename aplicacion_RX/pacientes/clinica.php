@@ -2,7 +2,7 @@
 session_start();
 include "../modelo/header.php";
 if (!$_SESSION) {
-    echo "<script>location.href='../../ingresar.php'</script>";
+    echo "<script>location.href='../../index.php'</script>";
 }
 
 include_once '../segurida/datosmedico.php';
@@ -97,8 +97,9 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                                     width="20%">EcoRadiología</a>
                         <a href="../../" class="brand-logo white-text tr minimo">EcoRadiología</a>
                         <ul class="right  maximo">
-                            <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['ip']; ?>" class="black-text"><i
-                                            class="icon-arrow-left2 "></i></a>
+                            <li><a href="cerrar_seccion.php?close=<?php echo $_SESSION['user']; ?>"
+                                   class="black-text"><i
+                                            class="icon-cancel-circle "></i></a>
                             </li>
                         </ul>
                     </div>
@@ -111,10 +112,10 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                 <div class="collapsible-body ">
                     <ul class="left sa">
                         <a href="#" onclick="rx1();" class="btn"><i class="icon-home"> </i>Inicio</a>
-                        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia</a>
-                        <a href="#" onclick="rx2();" class="white-text"><i class="icon-info"> </i>Notificación</a>
-                        <a href="#" onclick="rx3();" class="white-text"><i class="icon-notification "> </i>Ayuda</a>
-                        <a href="#" onclick="rx4();" class="white-text"><i class="icon-user"> </i>Cuenta</a>
+                        <a href="#" onclick="rx3();" class="btn"><i class="icon-folder-upload"> Webtranfer 3D</i></a>
+                        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia Softwares</a>
+                        <a href="#" onclick="rx2();" class="btn"><i class="icon-info"> </i>Informaciòn</a>
+                        <a href="#" onclick="rx4();" class="btn"><i class="icon-user"> </i>Cuenta</a>
                         <li><a href="../../index.php" class="">X</a></li>
                     </ul>
                 </div>
@@ -126,9 +127,9 @@ if (ctype_digit($varte) or $varte2 == "admin") {
     </div>
     <div class="center-align center-block center container row maximo">
         <a href="#" onclick="rx1();" class="btn"><i class="icon-home"> </i>Inicio</a>
-        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia</a>
-        <a href="#" onclick="rx2();" class="btn"><i class="icon-info"> </i>Notificación</a>
-        <a href="#" onclick="rx3();" class="btn"><i class="icon-notification "> </i>Ayuda</a>
+        <a href="#" onclick="rx3();" class="btn"><i class="icon-folder-upload"> Webtranfer 3D</i></a>
+        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia Softwares</a>
+        <a href="#" onclick="rx2();" class="btn"><i class="icon-info"> </i>Informaciòn</a>
         <a href="#" onclick="rx4();" class="btn"><i class="icon-user"> </i>Cuenta</a>
     </div>
 
@@ -184,19 +185,19 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                     </div>
                 </div>
                 <hr>
-                <p style="padding:0.5em;" class="center-align">Sucursal de <?php if ($row['Departamento'] == "1") {
+                <p style="padding:0.5em;" class="center-align">Sucursal de <?php if ($row['indsucursal'] == "1") {
                         echo $departameto1 = "Managua";
-                    } else if ($row['Departamento'] == "2") {
+                    } else if ($row['indsucursal'] == "2") {
                         echo $departameto1 = "Masaya";
-                    } else if ($row['Departamento'] == "3") {
+                    } else if ($row['indsucursal'] == "3") {
                         echo $departameto1 = "Chinandega";
-                    } else if ($row['Departamento'] == "4") {
+                    } else if ($row['indsucursal'] == "4") {
                         echo $departameto1 = "Esteli";
-                    } else if ($row['Departamento'] == "5") {
+                    } else if ($row['indsucursal'] == "5") {
                         echo $departameto1 = "León";
-                    } else if ($row['Departamento'] == "6") {
+                    } else if ($row['indsucursal'] == "6") {
                         echo $departameto1 = "Matagalpa";
-                    } else if ($row['Departamento'] == "7") {
+                    } else if ($row['indsucursal'] == "7") {
                         echo $departameto1 = "Chontales";
                     } ?></p>
                 <p class="bg-info" style="padding:0.5em;"> <?php echo $ContSuma['contSuma']; ?> Total de
@@ -225,84 +226,123 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                 </div>
                 <hr>
                 <div>
-                    <?php
-                    $dir = "../subir/161809360/";
-                          echo "Total : " . Fsize($dir);
-                    function Fsize($dir)
-                    {
-                        clearstatcache();
-                        $cont = 0;
-                        if (is_dir($dir)) {
-                            if ($gd = opendir($dir)) {
-                                while (($archivo = readdir($gd)) !== false) {
-                                    if ($archivo != "." && $archivo != "..") {
-                                        if (is_dir($archivo)) {
-                                            $cont += Fsize($dir . "/" . $archivo);
-                                        } else {
-                                            $cont += sprintf("%u", filesize($dir . "/" . $archivo));
-                                            //echo  "archivo : " . $dir . "/" . $archivo . "&nbsp;&nbsp;" . filesize($dir . "/" . $archivo) . "<br />";
-                                        }
-                                    }
-                                }
-                                closedir($gd);
-                            }
-                        }
-                        return "PESO OBTENIDO: ".formatBytes($cont, $precision = 2);
-                    }
-
-                    function formatBytes($bytes, $precision = 2) {
-                        $unit = ["B", "KB", "MB", "GB"];
-                        $exp = floor(log($bytes, 1024)) | 0;
-                        return round($bytes / (pow(1024, $exp)), $precision).$unit[$exp];
-                    }
-                    ?>
-
 
                 </div>
+                <div>
+                    <p>El personla tiene un limite de almacenamiento eso quiere decir que esta limitado </p>
+                    <p><?php
+                        $dir = "../subir/161809360/";
+                        echo "Total Archivo : " . Fsize($dir);
+                        function Fsize($dir)
+                        {
+                            clearstatcache();
+                            $cont = 0;
+                            if (is_dir($dir)) {
+                                if ($gd = opendir($dir)) {
+                                    while (($archivo = readdir($gd)) !== false) {
+                                        if ($archivo != "." && $archivo != "..") {
+                                            if (is_dir($archivo)) {
+                                                $cont += Fsize($dir . "/" . $archivo);
+                                            } else {
+                                                $cont += sprintf("%u", filesize($dir . "/" . $archivo));
+                                                //echo  "archivo : " . $dir . "/" . $archivo . "&nbsp;&nbsp;" . filesize($dir . "/" . $archivo) . "<br />";
+                                            }
+                                        }
+                                    }
+                                    closedir($gd);
+                                }
+                            }
+                            return formatBytes($cont, $precision = 2);
+                        }
+
+                        function formatBytes($bytes, $precision = 2)
+                        {
+                            $unit = ["B", "KB", "MB", "GB"];
+                            $exp = floor(log($bytes, 1024)) | 0;
+                            return round($bytes / (pow(1024, $exp)), $precision) . $unit[$exp];
+                        }
+
+                        ?></p>
+                </div>
+                <div class="container">
+                    <div class="center-block">
+                        <label for="file" class="control-label" style="font-size: 18px;">Limite de Memoria:</label>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
             </section>
         </div>
     </div>
     <div id="nn3" style="display: none;">
         <div class="no-margenes modal-body">
-            <section class="container white jk modal-content">
+            <section class="container white jk">
                 <br class="maximo">
-                <div class="container">
-                    <br class="minimo">
-                    <h5 class="modal-title"><i class="icon-info text-primary icontamano"></i>
-                        Consultas o Ayuda</h5>
-                </div>
+                <br class="minimo">
+                <h5 class="modal-title"><i class="icon-folder-upload text-primary icontamano"></i>
+                    Listado de trasferencia tomogragìa dìgitales</h5>
                 <hr>
-                <form action="../segurida/consutas_ayuda.php?indmedico=<?php echo $row['indmedico']; ?>" method="post"
-                      class="container">
-                    <section>
-                        <div>
-                            <p>Correo:</p>
-                            <input type="text" name="txt1" placeholder="Correo" value="<?php echo $row['Correo']; ?>"
-                                   required
-                                   style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
-                        </div>
-                        <div>
-                            <p>Asunto:</p>
-                            <input type="text" name="txt2" placeholder="Asunto"
-                                   required
-                                   style="border-radius: 6px;width:70%;border: 1px solid #2e6da4;padding-left:1em;">
-                        </div>
-                        <div>
-                            <p>Mensaje:</p>
-                            <textarea name="txt3" id="" cols="1000" rows="10"></textarea>
-                        </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Completo</th>
+                        <th>Edad</th>
+                        <th>Estudio</th>
+                        <th>Fecha</th>
+                        <th>Descargar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <?php
+                        $result4 = $mysqli->query("SELECT * FROM pedido WHERE indmedico='$id' ORDER BY ind DESC");
+                        while ($pedido = $result4->fetch_assoc()) {
+                        $valores = $pedido['tipo_estudio'];
+                        $p = "No reconocido";
+                        if ($valores == '1') {
+                            $p = 'PANORAMICA';
+                        }
+                        if ($valores == '2') {
+                            $p = 'ATM';
+                        }
+                        if ($valores == '3') {
+                            $p = 'CEFALOMETRICA';
+                        }
+                        if ($valores == '4') {
+                            $p = 'ESTUDIO';
+                        }
+                        if ($valores == '5') {
+                            $p = 'CARPAL';
+                        }
+                        ?>
 
-                    </section>
-                    <br>
-                    <section class="center center-align">
-                        <hr class="z-depth-3">
-                        <div>
-                            <input type="submit" value="Enviar a soporte" class="btn black white-text">
-                        </div>
-                        <hr class="z-depth-3">
-                    </section>
-                    <br>
-                </form>
+                    <tr>
+                        <td style="width: 10px !important;"><?php echo $pedido['ind']; ?></td>
+                        <td style="width: 50% !important;"><?php echo $pedido['nombre_completo']; ?></td>
+                        <td style="width: 10px !important;"><?php echo $pedido['edad']; ?></td>
+                        <td><?php echo $p; ?></td>
+                        <td><?php echo $pedido['Fecha']; ?></td>
+
+                        <td><a href="<?php echo $pedido['archivo_url'] ?>"
+                               download="<?php echo $pedido['archivo_url'] ?>"><i
+                                        class="icon-files-empty green white-text"
+                                        style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
+
+                        <td><a href=""><i class="icon-bin red white-text"
+                                          style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    </tr>
+                    </tbody>
+                </table>
             </section>
         </div>
     </div>
@@ -397,4 +437,27 @@ if (ctype_digit($varte) or $varte2 == "admin") {
             </section>
         </div>
     </div>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'edbaa8ec138f6f5a7a5c9505363528488dad2a6e';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <script>
+        smartsupp('name', '<?php echo $row['nombre'] . "" . $row['apellido']; ?>');
+        smartsupp('email', '<?php echo $row['Correo']; ?>');
+        smartsupp('phone', '<?php echo $row['telefono']; ?>');
+    </script>
 <?php include "../../model/footer.php"; ?>

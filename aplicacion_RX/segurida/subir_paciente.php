@@ -6,13 +6,7 @@
  * Time: 16:36
  */
 
-include_once 'conexion.php';
-session_start();
-$id = $_SESSION['id'];
-
-if (mysqli_connect_errno()) {
-    die("Error al conectar: " . mysqli_connect_error());
-}
+include_once '../../BD-Connection/conection.php';
 
 $result = $mysqli->query("SELECT `medico`.*, `medico`.`indmedico` FROM `medico` WHERE (`medico`.`indmedico` ='$id')");
 $medico = $result->fetch_array(MYSQLI_ASSOC);
@@ -21,6 +15,7 @@ if ($_POST) {
     $unir = '../subir/' . $id . '/';
     $id = $_GET['medico'];
     $nombre_imagen = $unir . $_FILES['subir']['name'];
+    echo $tamaño = $_FILES['subir']['size'];
     $nombre_paciente = $_POST['nombre_completo'];
     $edad = $_POST['edad'];
     $fecha = $hoy = date("j/n/Y");

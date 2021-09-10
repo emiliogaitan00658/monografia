@@ -61,8 +61,8 @@
     height: 500px !important;
 }
 .jk {
-    border-left: 1px solid #3e2723;
-    border-right: 1px solid #3e2723;
+    border: 1px solid #3e2723;
+    border-radius: 6px;
 }
 
 .montaje {

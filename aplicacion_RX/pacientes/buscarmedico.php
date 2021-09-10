@@ -80,8 +80,6 @@ include_once '../../BD-Connection/datos_clientes.php';
             <br>
         </div>
     </div>
-
-
     <div id="quitar1">
         <br>
         <br>
@@ -110,7 +108,7 @@ include_once '../../BD-Connection/datos_clientes.php';
 
                     $_SESSION['ip'] = $dep;
 
-                    $result4 = $mysqli->query("SELECT * FROM `medico` WHERE `Departamento` LIKE '$dep'");
+                    $result4 = $mysqli->query("SELECT * FROM `medico` WHERE `indsucursal` LIKE '$dep'");
                     while ($fecha = $result4->fetch_assoc()) {
                         $r = $fecha['indmedico'];
                         $r1 = $fecha['nombre'];
