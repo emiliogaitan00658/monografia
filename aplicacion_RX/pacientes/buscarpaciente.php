@@ -379,7 +379,6 @@ include_once '../../BD-Connection/datos_clientes.php';
                             $p = 'CARPAL';
                         }
                         ?>
-
                     <tr>
                         <td style="width: 10px !important;"><?php echo $pedido['ind']; ?></td>
                         <td style="width: 50% !important;"><?php echo $pedido['nombre_completo']; ?></td>
@@ -392,8 +391,8 @@ include_once '../../BD-Connection/datos_clientes.php';
                                         class="icon-files-empty green white-text"
                                         style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
 
-                        <td><a href=""><i class="icon-bin red white-text"
-                                          style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
+                        <td><a href="../segurida/eliminar_datos.php?eliminar=<?php echo $pedido['ind']; ?>" ><i class="icon-bin red white-text"
+                                          style="font-size: 18px;padding: 12px;border-radius: 6px" ></i></a></td>
                     </tr>
                     <?php
                     }

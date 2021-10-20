@@ -137,5 +137,12 @@ class datos_clientes
         return true;
     }
 
+    public static function eliminar_datos($eliminar,$mysqli)
+    {
+        $insert = "DELETE FROM `pedido` WHERE `pedido`.`ind` = '$eliminar'";
+        $query = mysqli_query($mysqli, $insert);
+        return true;
+    }
+
 
 }

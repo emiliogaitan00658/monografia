@@ -1,5 +1,6 @@
 <?php
 include_once 'conexion.php';
+
 if ($_GET){
 $ver=$_GET['indmedico'];
 $_SESSION['user']=$ver;

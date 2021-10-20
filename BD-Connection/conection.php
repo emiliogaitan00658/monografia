@@ -6,8 +6,7 @@
  * Time: 03:38 PM
  */
 $mysqli = new mysqli("localhost", "root", "", "bookdentdatabase");
-//$mysqli = new mysqli("mysql.hostinger.com", "u893429626_orthodentalsa", "@p2bH?Y8Y", "u893429626_prestamos");
-
+//$mysqli = new mysqli("mysql.hostinger.com", "u893429626_pacie", "*.*@NTONIO1997", "u893429626_medic");
 if (mysqli_connect_errno()) {
     die("Error al conectar: " . mysqli_connect_error());
 }
