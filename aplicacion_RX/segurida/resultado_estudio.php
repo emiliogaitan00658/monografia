@@ -1,5 +1,4 @@
 <?php
-include_once 'conexion.php';
 if ($_SESSION){
     $medico=$_SESSION['user'];
 }else{

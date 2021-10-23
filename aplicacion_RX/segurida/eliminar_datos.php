@@ -5,6 +5,5 @@ include_once "../../BD-Connection/datos_clientes.php";
 $eliminar=$_GET['eliminar'];
 datos_clientes::eliminar_datos($eliminar,$mysqli);
 
+echo "<script>location.href='../pacientes/buscarpaciente.php'</script>";
 
-
-//echo "<script>window.close();</script>";

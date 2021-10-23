@@ -43,7 +43,7 @@
         <div class="row ">
             <div class="modal-header">
                 <h5><i class=" icon-user-plus" style="font-size: 50px"> </i>Agregar personal admistrativo</h5>
-                <p>Solo el personal autirizado debe de ingresar el personal admistrativo</p>
+                <p>Solo el personal autorizado debe de ingresar el personal admistrativo</p>
             </div>
             <div class="borde1">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -79,12 +79,19 @@
                                 <option class="form-control" value="8">Managua Villa Fontana</option>
                             </select>
                         </div>
-                        <div class="control-pares col-md-3">
-                            <input type="text" name="textcedula" class="form-control"
+                        <div class="control-pares col-md-2">
+                            <input type="text" name="textuser" class="form-control"
                                    value="<?php if (!empty($_POST['textcedula'])) {
                                        echo $_POST['textcedula'];
                                    } ?>" style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;"
-                                   placeholder="No Cedula">
+                                   placeholder="Codigo Minsa">
+                        </div>
+                        <div class="control-pares col-md-2">
+                            <input type="text" name="textpass" class="form-control"
+                                   value="<?php if (!empty($_POST['textpass'])) {
+                                       echo $_POST['textpass'];
+                                   } ?>" style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;"
+                                   placeholder="Contraseña">
                         </div>
                         <div class="control-pares col-md-3">
                             <input type="text" name="texttelefono"
@@ -105,14 +112,6 @@
                                        echo $_POST['textdireccion1'];
                                    } ?>" required>
                         </div>
-                        <div class="control-pares col-md-5">
-                            <input type="text" name="textdireccion2"
-                                   style="border-radius: 6px; border: 1px solid #2e6da4; padding-left: 1em;"
-                                   class="form-control" placeholder="Direccion de domicilio 2"
-                                   value="<?php if (!empty($_POST['textdireccion2'])) {
-                                       echo $_POST['textdireccion2'];
-                                   } ?>">
-                        </div>
                     </section>
                     <br>
                     <div class="modal-footer">
@@ -127,7 +126,7 @@
         <div class="container" style="background-color: #2B394D">
             <div class="row" style="background-color: #2B394D">
                 <div class="col l6 s12">
-                    <h5 class="white-text"><img src="img/logo.png" alt="" class="responsive-img" style="width: 15%">EcoRadiología
+                    <h5 class="white-text"><img src="../../img/logo.png" alt="" class="responsive-img" style="width: 15%">EcoRadiología
                     </h5>
                     <p class="white-text text-lighten-4">
                         Ecoradiología Nuestra plataforma EcoRadiolgía permite al dentista socio y paciente acceder a las
@@ -143,4 +142,4 @@
     <script type="text/javascript" src="../../js/nuevo.js"></script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script type="text/javascript" src="../../js/personal.js"></script>
-</html>3
+</html>

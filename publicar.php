@@ -46,14 +46,13 @@ $conteo = $resul->fetch_array(MYSQLI_ASSOC);
             <a href="aplicacion_RX/pacientes/sucursales.php" class="btn-link">Publicar Estudio</a>
         </div>
         <div class="lk">
-            <a href="aplicacion_RX/pacientes/sucursales.php" class="btn-link">Lista de clientes</a>
+            <a href="aplicacion_RX/admistracion/muestra_datos_publicados.php" class="btn-link">Lista de Paciente</a>
         </div>
         <div class="lk">
             <a href="aplicacion_RX/admistracion/nuevopersonal.php" class="btn-link">Agregar Personal</a>
         </div>
-        <hr>
-        <p><?php echo $conteo['contSuma']; ?> publicaciones total.</p>
-        <hr>
+        <hr style="border-bottom: 1px solid black">
+        <p style="font-size: 18px"><b><?php echo $conteo['contSuma']; ?> publicaciones total</b></p>
     </div>
     <br>
     <br>

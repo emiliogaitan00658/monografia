@@ -31,7 +31,8 @@ if (ctype_digit($varte) or $varte2 == "admin") {
     </script>';
 }
 ?>
-
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script src="../css/animateprogress.js"></script>
 
     <script>
         function rx1() {
@@ -113,7 +114,8 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                     <ul class="left sa">
                         <a href="#" onclick="rx1();" class="btn"><i class="icon-home"> </i>Inicio</a>
                         <a href="#" onclick="rx3();" class="btn"><i class="icon-folder-upload"> Webtranfer 3D</i></a>
-                        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia Softwares</a>
+                        <a href="../../mcdcm/mviewer.html" target="_blank" class="btn"><i class="icon-profile"> </i>Tomografia
+                            Softwares</a>
                         <a href="#" onclick="rx2();" class="btn"><i class="icon-info"> </i>Informaciòn</a>
                         <a href="#" onclick="rx4();" class="btn"><i class="icon-user"> </i>Cuenta</a>
                         <li><a href="../../index.php" class="">X</a></li>
@@ -202,16 +204,16 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                     } ?></p>
                 <p class="bg-info" style="padding:0.5em;"> <?php echo $ContSuma['contSuma']; ?> Total de
                     publicación.</p>
-                <br>
-                <div class="container">
-                    <div class="center-block">
-                        <label for="file" class="control-label" style="font-size: 18px;">Limite de Memoria:</label>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                 aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
+                <!--                <br>-->
+                <!--                <div class="container">-->
+                <!--                    <div class="center-block">-->
+                <!--                        <label for="file" class="control-label" style="font-size: 18px;">Limite de Memoria:</label>-->
+                <!--                        <div class="progress">-->
+                <!--                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"-->
+                <!--                                 aria-valuemin="0" aria-valuemax="100"></div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </section>
         </div>
     </div>
@@ -229,9 +231,9 @@ if (ctype_digit($varte) or $varte2 == "admin") {
 
                 </div>
                 <div>
-                    <p>El personla tiene un limite de almacenamiento eso quiere decir que esta limitado </p>
+                    <p>Los limites de almacemaniento de su repositorio es equivalente, 15 Gb de almacenamiento </p>
                     <p><?php
-                        $dir = "../subir/161809360/";
+                        $dir = "../subir/" . $_SESSION['user'] . "/";
                         echo "Total Archivo : " . Fsize($dir);
                         function Fsize($dir)
                         {
@@ -261,23 +263,73 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                             $exp = floor(log($bytes, 1024)) | 0;
                             return round($bytes / (pow(1024, $exp)), $precision) . $unit[$exp];
                         }
+                        function Fsize2($dir)
+                        {
+                            clearstatcache();
+                            $cont = 0;
+                            if (is_dir($dir)) {
+                                if ($gd = opendir($dir)) {
+                                    while (($archivo = readdir($gd)) !== false) {
+                                        if ($archivo != "." && $archivo != "..") {
+                                            if (is_dir($archivo)) {
+                                                $cont += Fsize($dir . "/" . $archivo);
+                                            } else {
+                                                $cont += sprintf("%u", filesize($dir . "/" . $archivo));
+                                                //echo  "archivo : " . $dir . "/" . $archivo . "&nbsp;&nbsp;" . filesize($dir . "/" . $archivo) . "<br />";
+                                            }
+                                        }
+                                    }
+                                    closedir($gd);
+                                }
+                            }
+                            return formatBytes2($cont, $precision = 2);
+                        }
 
+                        function formatBytes2($bytes, $precision = 2)
+                        {
+                            $resutado=0;
+                            $unit = ["B", "KB", "MB", "GB"];
+                            $exp = floor(log($bytes, 1024)) | 0;
+                            $valores= round($bytes / (pow(1024, $exp)), $precision);
+                            if ($unit[$exp]="GB"){
+                                $resutado=$valores*1024;
+                            }
+                            return $resutado;
+                        }
                         ?></p>
                 </div>
-                <div class="container">
-                    <div class="center-block">
-                        <label for="file" class="control-label" style="font-size: 18px;">Limite de Memoria:</label>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                 aria-valuemin="0" aria-valuemax="100"></div>
+
+                <div class="row">
+                    <div class="container">
+                        <div class="center">
+                            <h5>Limite almacenamiento</h5>
+                            <hr>
+                            <progress id="html5" max="15360" value="0"></progress>
+                            <span></span>
                         </div>
+                        <input type="button" class="btn btn-link " id="boton" value="Recargar"/>
                     </div>
                 </div>
                 <br>
-                <br>
-            </section>
         </div>
+
+        <script type="text/javascript">
+            total_bultos = parseInt('<?php echo Fsize2($dir) ?>');
+            total=total_bultos/100
+            window.onload = function () {
+                animateprogress("#html5", total);
+            }
+            document.querySelector('#boton').addEventListener('click', function () {
+                animateprogress("#html5", total );
+            });
+        </script>
+
+        <br>
+        <br>
+        </section>
     </div>
+    </div>
+
     <div id="nn3" style="display: none;">
         <div class="no-margenes modal-body">
             <section class="container white jk">
@@ -286,56 +338,32 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                 <h5 class="modal-title"><i class="icon-folder-upload text-primary icontamano"></i>
                     Listado de trasferencia tomogragìa dìgitales</h5>
                 <hr>
-                <table class="table table-hover">
+                <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nombre Completo</th>
                         <th>Edad</th>
-                        <th>Estudio</th>
-                        <th>Fecha</th>
                         <th>Descargar</th>
-                        <th>Eliminar</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <?php
-                        $result4 = $mysqli->query("SELECT * FROM pedido WHERE indmedico='$id' ORDER BY ind DESC");
-                        while ($pedido = $result4->fetch_assoc()) {
-                        $valores = $pedido['tipo_estudio'];
-                        $p = "No reconocido";
-                        if ($valores == '1') {
-                            $p = 'PANORAMICA';
-                        }
-                        if ($valores == '2') {
-                            $p = 'ATM';
-                        }
-                        if ($valores == '3') {
-                            $p = 'CEFALOMETRICA';
-                        }
-                        if ($valores == '4') {
-                            $p = 'ESTUDIO';
-                        }
-                        if ($valores == '5') {
-                            $p = 'CARPAL';
-                        }
-                        ?>
-
+                        $result4 = $mysqli->query("SELECT * FROM webtranfer  WHERE indmedico=" . $_SESSION['user']);
+                        while ($pedido = $result4->fetch_assoc()) { ?>
                     <tr>
-                        <td style="width: 10px !important;"><?php echo $pedido['ind']; ?></td>
-                        <td style="width: 50% !important;"><?php echo $pedido['nombre_completo']; ?></td>
+                        <td style="width: 10px !important;"><?php echo $pedido['indtraferencia']; ?></td>
+                        <td style="width: 50% !important;"><?php echo $pedido['nombre_paciente']; ?></td>
                         <td style="width: 10px !important;"><?php echo $pedido['edad']; ?></td>
-                        <td><?php echo $p; ?></td>
-                        <td><?php echo $pedido['Fecha']; ?></td>
-
-                        <td><a href="<?php echo $pedido['archivo_url'] ?>"
-                               download="<?php echo $pedido['archivo_url'] ?>"><i
-                                        class="icon-files-empty green white-text"
-                                        style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
-
-                        <td><a href=""><i class="icon-bin red white-text"
-                                          style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
+                        <td style="width: 5px !important;"><a href="<?php echo $pedido['url_tranferencia']; ?>"
+                                                              class="btn btn-link"
+                                                              style="border-radius:12px !important;" target="_blank"><i
+                                        class="icon-link white-text"></i></a></td>
+                        <td style="width: 30px !important;"><?php echo $pedido['fecha']; ?></td>
+                        <td style="width: 10px !important;"><?php echo $pedido['edad']; ?></td>
                     </tr>
                     <?php
                     }

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -51,7 +51,8 @@
 <body>
 <?php
 session_start();
-include_once '../segurida/resultado_estudio.php';
+include_once '../../BD-Connection/conection.php';
+include_once '../../BD-Connection/datos_clientes.php';
 if(!$_SESSION){
     echo "<script>location.href='../../ingresar.php.php'</script>";
 }
@@ -60,10 +61,13 @@ if(!$_SESSION){
     <div class="fixed navbar-fixed">
         <nav class="nav-color fixed">
             <div class="nav-wrapper tr">
-                <a href="../../index.php" class="brand-logo white-text tr pp maximo">EcoRadiologíal</a>
+                <a href="#" class="brand-logo white-text tr pp maximo"> <img
+                        src="../../img/logo.png"
+                        alt="" class="responsive-img"
+                        width="20%">EcoRadiología</a>
                 <a href="../../index.php" class="brand-logo white-text tr minimo">EcoRadiología</a>
                 <ul class="right  maximo">
-                    <li><a href="clinica.php" class="black-text"><i class="icon-arrow-left2 "></i></a></li>
+                    <li><a href="../../publicar.php" class="black-text"><i class="icon-arrow-left2 "></i></a></li>
                 </ul>
             </div>
         </nav>
@@ -82,43 +86,8 @@ if(!$_SESSION){
 <br>
 <div class="container modal-content">
     <?php
-    $web = $_GET['ip'];
+    $web = 1;
     $suma=0;
-    ?>
-    <?php
-    if ($web == '1') {
-        ?>
-        <h5 class="center modal-title title">Radiografía Panoramica</h5>
-        <?php
-
-    }
-    ?>
-
-    <?php
-    if ($web == '2') {
-        ?>
-        <h5 class="center  modal-title title">Radiografía ATM</h5>
-        <?php
-
-    }
-    ?>
-
-    <?php
-    if ($web == '3') {
-        ?>
-        <h5 class="center modal-title title">Radiografía Cefalometrica</h5>
-        <?php
-
-    }
-    ?>
-
-    <?php
-    if ($web == '4') {
-        ?>
-        <h5 class="center modal-title title">Estudio</h5>
-        <?php
-
-    }
     ?>
     <br>
     <div class="z-depth-1">
@@ -133,6 +102,7 @@ if(!$_SESSION){
         <tr>
             <th>ID</th>
             <th>Nombre Completo</th>
+            <th>Doctor Completo</th>
             <th>Edad</th>
             <th class="center">Mostar</th>
             <th>Fecha</th>
@@ -140,18 +110,22 @@ if(!$_SESSION){
         </tr>
         </thead>
         <tbody class="buscar table table-striped">
-        <!-------Estudio de Radiografia en Panoramica --->
         <?php
-        $id=$_SESSION['user'];
-       // $result4 = $mysqli->query("SELECT * FROM pedido WHERE indmedico='$id' ORDER BY ind DESC");
-        $result4 = $mysqli->query("SELECT * FROM pedido WHERE indmedico='$id' AND tipo_estudio='$web' ORDER BY ind DESC ");
+        $result4 = $mysqli->query("SELECT * FROM pedido ORDER BY ind DESC ");
         while ($pedido = $result4->fetch_assoc()) {
+            $indmedico2=$pedido['indmedico'];
+
+            $result = $mysqli->query("SELECT * FROM `medico` WHERE indmedico='$indmedico2'");
+            $me = $result->fetch_array(MYSQLI_ASSOC);
+//            $medico2=datos_clientes::datos_medico_generales2($indmedico2,$mysqli);
             ?>
-        <?php if($pedido['tipo_estudio']=='1' or $pedido['tipo_estudio']=='2' or $pedido['tipo_estudio']=='3' or  $pedido['tipo_estudio']=='5'){ ?>
+
+            <?php if($pedido['tipo_estudio']=='1' or $pedido['tipo_estudio']=='2' or $pedido['tipo_estudio']=='3' or  $pedido['tipo_estudio']=='5'){ ?>
 
                 <tr>
                     <td><?php echo $pedido['ind']; ?></td>
                     <?php $suma=$suma+1; ?>
+                    <td><?php echo $me['nombre']." ".$me['apellido']; ?></td>
                     <td><?php echo $pedido['nombre_completo'] ?></td>
                     <td><?php echo $pedido['edad'] ?> años</td>
                     <td>
@@ -177,7 +151,7 @@ if(!$_SESSION){
                     <td> <a href="<?php echo $pedido['archivo_url'] ?>" download="<?php echo $pedido['archivo_url'] ?>"
                             class="btn"  style="background-color: #0c5460;">Descargar</a></td>
                 </tr>
-        <?php }?>
+            <?php }?>
 
             <?php if($pedido['tipo_estudio']=='4'){ ?>
                 <tr>
@@ -190,40 +164,25 @@ if(!$_SESSION){
                             Estudio</a> </td>
                     <td><?php echo $pedido['Fecha'] ?></td>
                 </tr>
-        <?php }?>
-        <?php
+            <?php }?>
+            <?php
         }
         ?>
         </tbody>
     </table>
 </div>
-<footer class="page-footer white z-depth-3">
-    <div class="container">
-        <div class="row">
-            <div  class="col l6 s12">
-                <h5 class="black-text">Plataforma online EcoRadiología</h5>
-                <p class="black-text text-lighten-4">
-                    ¡Llevando la radiología dental literalmente hacia las nubes!Llegaría 100% virtual con nuestra plataforma. Así ayudarías al planeta a reducir la
-                    utilización de insumos altamente contaminante (placas, líquidos, etc.) y reducir papelería excesiva que
-                    fomenta a la tala indiscriminada de árboles.
-                </p>
+<footer class="page-footer  z-depth-3" style="background-color: #2B394D">
+    <div class="container" style="background-color: #2B394D">
+        <div class="row" style="background-color: #2B394D">
+            <div class="col l6 s12">
+                <h5 class="white-text"><img src="../../img/logo.png" alt="" class="responsive-img" style="width: 15%">EcoRadiología
+                </h5>
+                <p class="white-text text-lighten-4">
+                    Ecoradiología Nuestra plataforma EcoRadiolgía permite al dentista socio y paciente acceder a las
+                    imágenes y diagnósticos: En tiempo real (conforme se va elaborando el estudio) De por vida, los
+                    365
+                    días del año Desde cualquier dispositivo (móvil, tablet, computadora, laptop).</p>
             </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="black-text">Contacto</h5>
-                <ul>
-                    <li><a class="black-text text-lighten-3" href="#!"> <i class="icon-profile small"></i> Tel: 2220-6871</a></li>
-                    <br>
-                    <li><a class="black-text text-lighten-3" href="mailto:ortho_dental@hotmail.com"> <i
-                                    class="icon-mail4 small"></i>soporteEcoRadiología@gmail.com</a>
-                    </li>
-                    <br>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container black-text">
-            © <?php echo date("Y");?> Copyrightv EcoRadiología
         </div>
     </div>
 </footer>

@@ -3,7 +3,6 @@
         <a href="#!" class="brand-logo center"><img src="img/logo.png" width="6%" alt="">EcoRadiología</a>
         <ul class="left hide-on-med-and-down">
             <li><a href="sass.html">Inicio</a></li>
-            <li><a href="badges.html">Soporte</a></li>
             <li><a href="collapsible.html">Tutorial</a></li>
         </ul>
     </div>

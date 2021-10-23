@@ -3,26 +3,31 @@ include "../modelo/header.php";
 include_once '../../BD-Connection/conection.php';
 include_once '../../BD-Connection/datos_clientes.php';
 ?>
+    <link rel="stylesheet" href="../css/style.css" xmlns="http://www.w3.org/1999/html"/>
+    <script src="../css/animateprogress.js"></script>
+
     <p style="display: none;">
         <?php
         session_start();
         include_once "aplicacion_RX/modelo/header.php   ";
-        $id =$_SESSION['id'];
+        $id = $_SESSION['id'];
 
-        $medico=datos_clientes::datos_medico($id, $mysqli);
+        $medico = datos_clientes::datos_medico($id, $mysqli);
         $result = $mysqli->query("SELECT `medico`.*, `medico`.`indmedico` FROM `medico` WHERE (`medico`.`indmedico` ='$id')");
         $medico = $result->fetch_array(MYSQLI_ASSOC);
         if ($_POST) {
             if (isset($_POST['nombre_completo'])) {
                 include_once '../segurida/subir_paciente.php';
-               // echo '<script>alert("Exito dato Gurdado") ;</script>';
+                // echo '<script>alert("Exito dato Gurdado") ;</script>';
 
-            }else{
-                $nombre=$_POST['textnombre'];
-                $edad=$_POST['textedad'];
-                $url=$_POST['texturl'];
-                datos_clientes::registro_webtranfer($nombre,$edad,$url,$id,$mysqli);
-               // echo '<script>alert("Exito dato Gurdado") ;</script>';
+            } else {
+                $nombre = $_POST['textnombre'];
+                $edad = $_POST['textedad'];
+                $url = $_POST['texturl'];
+                datos_clientes::registro_webtranfer($nombre, $edad, $url, $id, $mysqli);
+
+
+                // echo '<script>alert("Exito dato Gurdado") ;</script>';
 
             }
 
@@ -125,7 +130,7 @@ include_once '../../BD-Connection/datos_clientes.php';
                                     width="20%">EcoRadiología</a>
                         <a href="../../" class="brand-logo white-text tr minimo">EcoRadiología</a>
                         <ul class="right  maximo">
-                            <li><a href="buscarmedico.php?ip=<?php echo $_SESSION['id']; ?>" class="black-text"><i
+                            <li><a href="buscarmedico.php?ip=1" class="black-text"><i
                                             class="icon-arrow-left2 "></i></a>
                             </li>
                         </ul>
@@ -286,7 +291,7 @@ include_once '../../BD-Connection/datos_clientes.php';
 
         </div>
 
-        <div id="nn4"  style="display: none;">
+        <div id="nn4" style="display: none;">
             <section class="container modal-content">
                 <br>
                 <p style="padding: 1em;border-radius: 6px;border: 1px solid #2b2d2f" class="modal-title container">
@@ -343,7 +348,8 @@ include_once '../../BD-Connection/datos_clientes.php';
                 <br>
                 <br>
                 <br>
-                <table class="table table-hover">
+                <h5>Informenes radiologico 2D</h5>
+                <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -359,7 +365,7 @@ include_once '../../BD-Connection/datos_clientes.php';
                     <tr>
                         <?php
                         $result4 = $mysqli->query("SELECT * FROM pedido WHERE indmedico='$id' ORDER BY ind DESC");
-                        
+
                         while ($pedido = $result4->fetch_assoc()) {
                         $valores = $pedido['tipo_estudio'];
                         $p = "No reconocido";
@@ -391,8 +397,9 @@ include_once '../../BD-Connection/datos_clientes.php';
                                         class="icon-files-empty green white-text"
                                         style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
 
-                        <td><a href="../segurida/eliminar_datos.php?eliminar=<?php echo $pedido['ind']; ?>" ><i class="icon-bin red white-text"
-                                          style="font-size: 18px;padding: 12px;border-radius: 6px" ></i></a></td>
+                        <td><a href="../segurida/eliminar_datos.php?eliminar=<?php echo $pedido['ind']; ?>"><i
+                                        class="icon-bin red white-text"
+                                        style="font-size: 18px;padding: 12px;border-radius: 6px"></i></a></td>
                     </tr>
                     <?php
                     }
@@ -400,6 +407,81 @@ include_once '../../BD-Connection/datos_clientes.php';
                     </tr>
                     </tbody>
                 </table>
+
+                <hr>
+                <h5>Webtraner enviado para descargas</h5>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Completo</th>
+                        <th>Edad</th>
+                        <th>Descargar</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <?php
+                        $result4 = $mysqli->query("SELECT * FROM webtranfer  WHERE indmedico='$id'");
+                        while ($pedido = $result4->fetch_assoc()) { ?>
+                    <tr>
+                        <td style="width: 10px !important;"><?php echo $pedido['indtraferencia']; ?></td>
+                        <td style="width: 50% !important;"><?php echo $pedido['nombre_paciente']; ?></td>
+                        <td style="width: 10px !important;"><?php echo $pedido['edad']; ?></td>
+                        <td style="width: 5px !important;"><a href="<?php echo $pedido['url_tranferencia']; ?>"
+                                                              class="btn btn-link"
+                                                              style="border-radius:12px !important;" target="_blank"><i
+                                        class="icon-link white-text"></i></a></td>
+                        <td style="width: 30px !important;"><?php echo $pedido['fecha']; ?></td>
+                        <td style="width: 10px !important;"><?php echo $pedido['hora']; ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div class="container z-depth-1" style="padding: 2em; border-color: #0c5460!important;">
+                    <p style="font-size: 18px">Los limites de almacemaniento de su repositorio es equivalente,
+                        15 Gb de almacenamiento </p>
+                    <p><b><?php
+                    $dir = "../subir/" . $id . "/";
+                    echo "Total Archivo : " . Fsize($dir);
+                    function Fsize($dir)
+                    {
+                        clearstatcache();
+                        $cont = 0;
+                        if (is_dir($dir)) {
+                            if ($gd = opendir($dir)) {
+                                while (($archivo = readdir($gd)) !== false) {
+                                    if ($archivo != "." && $archivo != "..") {
+                                        if (is_dir($archivo)) {
+                                            $cont += Fsize($dir . "/" . $archivo);
+                                        } else {
+                                            $cont += sprintf("%u", filesize($dir . "/" . $archivo));
+                                            //echo  "archivo : " . $dir . "/" . $archivo . "&nbsp;&nbsp;" . filesize($dir . "/" . $archivo) . "<br />";
+                                        }
+                                    }
+                                }
+                                closedir($gd);
+                            }
+                        }
+                        return formatBytes($cont, $precision = 2);
+                    }
+
+                    function formatBytes($bytes, $precision = 2)
+                    {
+                        $unit = ["B", "KB", "MB", "GB"];
+                        $exp = floor(log($bytes, 1024)) | 0;
+                        return round($bytes / (pow(1024, $exp)), $precision) . $unit[$exp];
+                    }
+
+                    ?></b></p>
+
+                </div>
                 <br>
             </section>
         </div>
