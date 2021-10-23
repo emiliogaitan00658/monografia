@@ -21,6 +21,15 @@
     <script type="text/javascript" src="../../js/sweetalert.min.js"></script>
 </head>
 <body>
+
+
+<?php
+include_once "../../BD-Connection/datos_clientes.php";
+include_once "../../BD-Connection/conection.php";
+$_POST
+
+
+?>
 <div class="maximo">
     <nav>
         <div class="fixed navbar-fixed">

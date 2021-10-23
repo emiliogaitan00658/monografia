@@ -12,6 +12,20 @@ $result = $mysqli->query("SELECT `medico`.*, `medico`.`indmedico` FROM `medico` 
 $medico = $result->fetch_array(MYSQLI_ASSOC);
 
 if ($_POST) {
+    echo '<script>swal({
+                title: "Dato Guardado con exito?",
+                text: "Seguro de Eliminar Factura",
+                icon: "success",
+                buttons: true,
+
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        location.href = "buscarpaciente.php";
+                    } else {
+                        location.href = "buscarpaciente.php";
+                    }
+                });</script>';
     $unir = '../subir/' . $id . '/';
     $id = $_GET['medico'];
     $nombre_imagen = $unir . $_FILES['subir']['name'];

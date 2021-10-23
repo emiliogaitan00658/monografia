@@ -291,8 +291,10 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                             $unit = ["B", "KB", "MB", "GB"];
                             $exp = floor(log($bytes, 1024)) | 0;
                             $valores= round($bytes / (pow(1024, $exp)), $precision);
-                            if ($unit[$exp]="GB"){
+                            if ($unit[$exp]=="GB"){
                                 $resutado=$valores*1024;
+                            }else{
+                                $resutado;
                             }
                             return $resutado;
                         }
@@ -315,12 +317,11 @@ if (ctype_digit($varte) or $varte2 == "admin") {
 
         <script type="text/javascript">
             total_bultos = parseInt('<?php echo Fsize2($dir) ?>');
-            total=total_bultos/100
             window.onload = function () {
-                animateprogress("#html5", total);
+                animateprogress("#html5", total_bultos);
             }
             document.querySelector('#boton').addEventListener('click', function () {
-                animateprogress("#html5", total );
+                animateprogress("#html5", total_bultos);
             });
         </script>
 
@@ -363,7 +364,7 @@ if (ctype_digit($varte) or $varte2 == "admin") {
                                                               style="border-radius:12px !important;" target="_blank"><i
                                         class="icon-link white-text"></i></a></td>
                         <td style="width: 30px !important;"><?php echo $pedido['fecha']; ?></td>
-                        <td style="width: 10px !important;"><?php echo $pedido['edad']; ?></td>
+                        <td style="width: 10px !important;"><?php echo $pedido['hora']; ?></td>
                     </tr>
                     <?php
                     }

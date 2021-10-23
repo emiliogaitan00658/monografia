@@ -9,7 +9,7 @@ include_once '../../BD-Connection/datos_clientes.php';
     <p style="display: none;">
         <?php
         session_start();
-        include_once "aplicacion_RX/modelo/header.php   ";
+        include_once "aplicacion_RX/modelo/header.php";
         $id = $_SESSION['id'];
 
         $medico = datos_clientes::datos_medico($id, $mysqli);
@@ -18,7 +18,6 @@ include_once '../../BD-Connection/datos_clientes.php';
         if ($_POST) {
             if (isset($_POST['nombre_completo'])) {
                 include_once '../segurida/subir_paciente.php';
-                // echo '<script>alert("Exito dato Gurdado") ;</script>';
 
             } else {
                 $nombre = $_POST['textnombre'];
@@ -26,8 +25,20 @@ include_once '../../BD-Connection/datos_clientes.php';
                 $url = $_POST['texturl'];
                 datos_clientes::registro_webtranfer($nombre, $edad, $url, $id, $mysqli);
 
+                 echo '<script>swal({
+                title: "Dato Guardado con exito?",
+                text: "Seguro de Eliminar Factura",
+                icon: "success",
+                buttons: true,
 
-                // echo '<script>alert("Exito dato Gurdado") ;</script>';
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        location.href = "buscarpaciente.php";
+                    } else {
+                        location.href = "buscarpaciente.php";
+                    }
+                });</script>';
 
             }
 
@@ -38,7 +49,7 @@ include_once '../../BD-Connection/datos_clientes.php';
         if ($_GET) {
             $_SESSION['id'] = $_GET['medico'];
             $id = $_SESSION['id'];
-            echo "<script>location.href='buscarpaciente.php'</script>";
+            //echo "<script>location.href='buscarpaciente.php'</script>";
         } else {
             $_SESSION['id'] = $_SESSION['id'];
             $id = $_SESSION['id'];
